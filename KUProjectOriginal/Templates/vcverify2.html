@@ -1,0 +1,147 @@
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .v {
+            margin-left: 8%;
+            height: 850px;
+            margin-top: 0px;
+            border-left: 2px solid black;
+        }
+
+        .v1 {
+            margin-right: 8%;
+            height: 850px;
+            margin-top: 0px;
+            border-right: 2px solid black;
+        }
+
+        hr.style-two {
+            border: 0;
+            height: 2%;
+            margin-top: 0%;
+            border-top: 0px solid black;
+            border-bottom: 2px solid black;
+            border-collapse: separate;
+            border-spacing: 15px 50px;
+        }
+
+        hr.style-three {
+            border: 0;
+            height: 0;
+            margin-top: 3%;
+            border-top: 1px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        text.text-style {
+            border-collapse: separate;
+            border-spacing: 15px 50px;
+        }
+
+        .btn {
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            font-weight: bold;
+            background-color: rgb(206, 206, 250);
+            padding: 6px 38px;
+            margin: 2px 30px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            color: black;
+            background-color: rgb(208, 213, 255);
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <center><h1>KAKATIYA UNIVERSITY</h1></center>
+    </div>
+    <form action="/vcnote2" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div class="v0">
+            <div class="v">
+                <div class="v1">
+                    <div style="margin-left:50px;display: flex; word-spacing: 170px;">
+                        File-No. Branch(E1) Unit
+                    </div>
+                    <hr class="style-two"><br>
+                    <div font-size="15" style="margin-left:20px;margin-right:20px;">
+                        <table>
+                            <tr>
+                                <th width="15%" style="vertical-align: top;">SUBJECT </th>
+                                <td>: <b>{{andy.subject}}</b>-Ph.D.thesis submittedby<b>
+                                        Mr. {{andy.nameOfSchlr}}-</b> Appointment of<b> <i>Three Examiners</i></b>for
+                                    Evaluation-Reg.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr class="style-three">
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">
+                        In compliance with the Approval of the Vice-Chancellor at para-06, a letter was issued by thie
+                        office vide letter No.{{andy.s4}}/E1/Ph.D/KU/{{andy.s5}}, dated {{andy.s6}}
+                    </div>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">
+                        The Ph.D Reports on the Thesis Submitted by Mr./Ms. {{andy.nameOfSchlr}} in {{andy.subject}} have been received
+                        from the following Examinars:
+                    </div>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">
+                        <ol>
+                            {% for i in vicky %}
+                            <li>{{i.name}}<br>{{i.nameOfUniv}},<br><b>{{ i.state}} </b>.</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;line-height: 30px;">
+                        Kindly see the Ph.D reports at flag <b>'A' :<a target="_blank"href="/media/{{andy.f1}}" ><input type="button"class="btn"value="Report 1"></a>,'B' :<a target="_blank"href="/media/{{andy.f2}}" ><input type="button"class="btn"value="Report 2"></a>,'C' :<a target="_blank"href="/media/{{andy.f3}}" ><input type="button"class="btn"value="Report 3"></a></b>
+                        <br>
+                        <br>
+                        The <b>Three Examinars</b> have recommended for the Award of Ph.D. Degree to the Candidate after Conducting the Open Viva-Voce.
+                        <br>
+                        <br>
+                        Hence, if agreed, <b>One Examinar</b> may be appointed from the above of three Examinars to conduct the open viva-voce of the candidate as per the Ph.d.New Rules(8) ix.1 of Kakatiya University.
+                        <br>
+                        <br>
+                        Submitted for Approval
+                    </div>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">Submitting for appointing One Examiners 
+                    </div>
+                    <br>
+                    <center>
+                        <div font-size="15"><b>Appointed S.No<input type="number" name="s7"style="width:60px;border-top:0px;border-left:0px;   border-right:0px;" min="1" max="3" required> Examinar for Viva-Voce 
+                            <select id="online" name="onof" required style=" width:9.5%;height:25px;font-size: 15px;background-color:green;color:white;border-radius:7px;">
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
+                                <option value="Online/Offline">Online/Offline</option>
+                            </select> mode.
+
+                        </div>
+                        <br>
+                        <div>
+                            <input type="file" id="myfile" name="myfile" style="width:160px" required>
+                            <br>
+                            <b>Vice-Chancellor</b>
+                        </div>
+                        <br>
+                        <button name="button" value="OK" class="btn" type="submit" onclick="hello()">Submit</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>

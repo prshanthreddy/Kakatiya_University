@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application</title>
+    <link rel="stylesheet" href="/static/login.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+    <script src="/static/login.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script lang="js">
+        function loadsubmit(){
+            document.login.submit();
+        }
+        window.onload=function(){
+            $("#load-icon").hide(); // I needed the loading icon to hide once the page loads
+          }
+          var onBeforeUnLoadEvent = false;
+          window.onunload = window.onbeforeunload= function(){
+          if(!onBeforeUnLoadEvent){ // for avoiding dual calls in browsers that support both events 
+            onBeforeUnLoadEvent = true;
+              $("#load-icon").show();
+              setTimeout(function(){
+                $("#load-icon").hide();},5000); // hiding the loading icon in any case after  
+                                                // 5 seconds (remove if you do not want it)
+            }
+          };
+    </script>
+</head>
+
+<body onload="loadsubmit()">
+    <form method="post" action="/validate"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="whole">
+            <div class="main">
+                <div class="logo">
+                    <img src="/static/kulogo.jpeg" width="100" height="100">
+                </div>
+                <big><big><big><big><big> KAKATIYA UNIVERSITY<br></big></big></big></big></big>
+                <big><b>Warangal-506 009</b></big>
+                <h2 style="margin-bottom:03px;">ONLINE PORTAL FOR SUBMISSION OF Ph.D THESIS.</h2>
+            </div>
+            <div class="para">
+                <p><b><u>Fee Payment</u></b>
+                    <br>
+                    <br>
+                    UPI Reference ID : <input style="width:270px; height:25px;" type="text" id="upiid" name="upiid" required>
+                    <br><br>
+                    Online/PhonePe/G.Pay Amount : <input style="width:145px; height:25px;" type="number" id="amount"
+                        name="amount" placeholder="Enter the fee" required><br><br>
+                    Date of Payment : <input style="width:280px; height:25px;" type="date" id="paymentdate"
+                        name="paymentdate" required><br><br>
+                    Receipt of Payment : <input id="twenty-two" name="payss" type="file" onchange='validateSize1(this)'
+                        style="width: 260px;;height: 30px;font-size: 20px;" required>
+                </p>
+            </div>
+            <br>
+            <table style="border: 0px solid black;margin: auto;width: 90%;">
+                <thead>
+                    <tr>
+                        <th>Name of the Candidate <small style="font-style: italic;">(In Capital)</small>
+                            Shri/Mr./Ms.<br><small style="font-style: italic;">(as per Pre-Ph.D
+                                Memo)</small></th>
+                        <td><input id="one" name="cname" class="info" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Mother Name</th>
+                        <td><input id="two" name="mname" class="info" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Father Name</th>
+                        <td><input id="two" name="fname" class="info" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Social Category</th>
+                        <td><input id="two" name="caste" class="info" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date of Birth</th>
+                        <td><input id="three" name="dob" class="info" type="date"
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr>
+                    <tr>
+                        <th>Photo <small style="font-style: italic;">(Passport Size)</small></th>
+                        <td><input id="three" name="photo" class="info" type="file" onchange='validateSize1(this)'
+                                style="width:100%;height: 30px;font-size: 20px;" accept="image/jpeg" required></td>
+                    </tr>
+                    <tr>
+                        <th>Mobile No</th>
+                        <td><input id="four" name="mob" class="info" value="{{andy}}" type="text" maxlength="10"
+                                style="width:100%;height: 30px;font-size: 20px;" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>E-mail Id </th>
+                        <td><input id="email" name="email" class="info" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr>
+                    <tr>
+                        <th>Permanent Address</th>
+                        <td><textarea id="afive" name="address" cols="30" rows="5"
+                                placeholder="H.No,Village/Town,Dist,State" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>  Subject/Branch</th>
+                        <td><input class="info" id="eleven" name="supdept" type="text"
+                            style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><b>College/Institution</b><br></th>
+                        <td><span id="span">
+                        <select class="info" id="six" name="supwadd" type="text"style=" width:100%;height:30px;font-size: 15px;" placeholder="Ex: University College, Kakatiya University, Warangal" required>
+                                <option value="University college,Kakatiya University, Warangal.">University College,Kakatiya University, Warangal.</option>
+                                <option value="Kakatiya University College of Engineering and Technology,Kakatiya University, Warangal">Kakatiya University College of Engineering and Technology,Kakatiya University, Warangal</option>
+                                <option value="University college of Pharmaucetical sciences,Kakatiya University, Warangal.">University College of Pharmaucetical Sciences,Kakatiya University, Warangal</option>
+                                <option value="University college of Physical Education,Kakatiya University, Warangal.">University College of Physical Education,Kakatiya University, Warangal</option>
+                                <option value="Indian Institute of Chemical technology, Hyderabad (IICT)">Indian Institute of Chemical Technology, Hyderabad (IICT)</option>
+                                <option value="Kakatiya Institute of Technology and Science (KITSW)">Kakatiya Institute of Technology and Science, Warangal (KITSW)</option>
+                        </select></span>
+                        <input type="checkbox" onchange="myFunction03()" value="not in the list?" id="check">
+                        <label for="check">not in the list?</label>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th>Faculty</th>
+                        <td><input class="info" id="seven" name="ftsubmit" type="text"
+                
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><b> M.A/M.Sc. M.Com. /P.G </b><br><small><i>(or Its equal examination has passed)</i></small></th>
+                        <td><input class="info" id="eight" name="equalexam" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="padding-left: 100px;">a. Name of the University</th>
+                        <td><input class="info" id="nine" name="university" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="padding-left: 100px;">b. Month/ Year of Passing</th>
+                        <td><input class="info" id="nine" name="monthyear" placeholder="mm/yyyy" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr>
+                    <tr>
+                        <th>Name of the Supervisor </th>
+                        <td><input class="info" id="ten" name="supname" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Ph.D. Admission Order</th>
+                        <td><input class="info" id="thirteen" name="admissionorder" type="file"
+                                onchange='validateSize1(this)' style="width:100%;height: 30px;font-size: 20px;"
+                                required>
+                    </tr>
+                    <tr>
+                        <th>Supervisor's Certificate <small style="font-style: italic;">(Attested by Dean,Head and
+                                Chairperson BoS)</small></th>
+                        <td><input class="info" id="fourteen" name="supreport" type="file"
+                                onchange='validateSize1(this)' style="width:100%;height: 30px;font-size: 20px;"
+                                required></td>
+                    </tr>
+                    <tr>
+                        <th>Title of the Thesis</th>
+                        <td><input class="info" id="fifteen" name="titlethesis" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Joining Report <small style="font-style: italic;"></small></th>
+                        <td><input class="info" id="fifteen" name="tthesis" type="file" onchange='validateSize1(this)'
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr>
+                    <tr>
+                        <th>Academic Year of Admission into Ph.D. Program</th>
+                        <td><input class="info" id="sixteen" name="yearofadd" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr> 
+                    <tr>
+                        <th>Full time /Part-time</th>
+                        <td><select name="time" style="width:170px;height:25px;" required>
+                                <option value="FullTime" True>FullTime</option>
+                                <option value="PartTime">PartTime</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Are you submitting thesis within prescribed time? </th>
+                        <td> <label for="eighteenT">Yes</label><input type="radio" onchange="myFunction01(this)"
+                                id="eighteenT" name="ptime" value="true"><label for="eighteenF">No</label><input
+                                id="eighteenF" onchange="myFunction01(this)" type='radio' name="ptime" value="false">
+                        </td>
+                    </tr>
+                    <tr id="pr">
+
+                    </tr>
+                    <tr>
+                        <th>Pre-Ph.D Memo</th>
+                        <td><input class="info" id="twenty" name="prephd" type="file"
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr>
+                    <tr>
+                        <th>Pre Phd Passing Month and Yaar</th>
+                        <td><input class="info" id="prephdmonthandyear" name="prephdmonthandyear" type="text"
+                                style="width:100%;height: 30px;font-size: 20px;" placeholder="mm/yyyy" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Research Paper <br> <small style="font-style: italic;">(Attested by the
+                                Supervisor,Head,BoS and Dean) </small></th>
+                        <td><input class="info" id="twenty-one" name="article" type="file"
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr>
+                    <tr>
+                        <th>Synopsis<br><small style="font-style: italic;">(Soft Copy pdf)</small></th>
+                        <td><input id="twenty-two" name="synopsis" class="info" type="file"
+                                onchange='validateSize(this)' style="width:100%;height: 30px;font-size: 20px;" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Thesis<br><small style="font-style: italic;">(Soft Copy pdf)</small></th>
+                        <td><input id="twenty-three" name="uploadthesis" class="info" type="file"
+                                onchange='validateSize2(this)' style="width:100%;height: 30px;font-size: 20px;"
+                                required></td>
+                    </tr>
+                    <tr>
+                        <th>Plagiarism Certificate</th>
+                        <td><input id="twenty-five" name="pc" class="info" type="file" accept="image/jpeg"
+                                onchange='validateSize1(this)' style="width:100%;height: 30px;font-size: 20px;"
+                                required></td>
+                    </tr>
+                    <tr>
+                        <th>Date of Submission</th>
+                        <td><input id="twenty-four" name="dateofsubmission" class="info" type="date"
+                                style="width:100%;height: 30px;font-size: 20px;" required></td>
+                    </tr>
+                    <tr>
+                        <th>No Due Certificate from the Principal Office</th>
+                        <td><input id="twenty-five" name="noc" class="info" type="file" accept="image/jpeg"
+                                onchange='validateSize1(this)' style="width:100%;height: 30px;font-size: 20px;"
+                                required>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <br>
+            <br>
+            <div class="bottom">
+                Date of Application : <input type="text" id="date" name="myDate"
+                    style="width:123px;height:21px;font-size:20px;" onchange="datefun()" readonly>
+                <div class="sign">
+                    Signature of the Applicant : <input type="file" name="Sign" accept="image/jpeg"
+                        onchange='validateSize1(this)' style="height:30px;font-size:medium;background-color: white;"
+                        required>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="sub">
+                <button class="btn btn-primary " onclick="myFunction02()" type="submit">Submit </button>
+                <button class="btn" id="reset" type="reset">Reset</button>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+
+    </form>
+    <script>
+        const dateObj = new Date();
+        const month = dateObj.getMonth()+1;
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const year = dateObj.getFullYear();
+        const output = day + '/' + month+ '/' + year;
+        document.getElementById('date').value = output;;
+    </script>
+</body>
+
+</html>

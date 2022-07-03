@@ -1,0 +1,24 @@
+<!Doctype html>
+
+<head>
+    <link rel="stylesheet" href="/static/payverify.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+</head>
+<body>
+
+    <div class="main">
+        <div class="logo">
+            <img src="/static/kulogo.jpeg" width="100" height="100">
+        </div>
+        <big><big><b><big><big> <big> EXAMINATION BRANCH<br></big></b></big></big></big></big>
+        <big><big><big> KAKATIYA UNIVERSITY<br></big></big></big>
+        <big>Warangal-506 009</big>
+        <h2 style="margin-bottom:03px;"><u>Vice Chancellor</u></h2>
+        {% csrf_token %}
+        <br><br><br><a href="/vcnote1"><button class="btn" style="color:black;">Note 1 List</button></a>
+        <br><br><br><a href="/vcnote2"><button class="btn" style="color:black;">Note 2 List</button></a>
+        <br><br><br><a href="/vcnote3"><button class="btn" style="color:black;">Note 3 List</button></a>
+        <br><br><br><a href="/logout"><button class="btn" style="color:black;">Log out</button></a>
+    </div>
+</body>
+</html>

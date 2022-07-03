@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/check.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+</head>
+
+<body>
+    <div class="main">
+        <div class="logo">
+            <img src="/static/kulogo.jpeg" width="100" height="100">
+        </div>
+        <big><big>
+            <b><big><big> <big> KAKATIYA UNIVERSITY<br></big><b>
+            </big></big></big></big>
+        <big><b>Warangal-506 009</b></big>
+        <h2 style="margin-bottom: 03px;">Scholar Login</h2>
+        <hr style="border:1px solid black;margin-left:40%;margin-right:40%">
+    </div>
+    <center><br>
+        <div class ="message">
+        <b>{{message}}</b> <br> <br>
+        <form method="post" action="/status" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="account-info"><br>
+                <label>
+                    Mobile no :
+                    <input type="tel" name="phno" class="mob" id="mob">
+                </label>
+                <label>
+                    Password :
+                    <input id="two" class="info" type="password" name="password">
+                </label>
+            </fieldset>
+            <fieldset class="account-action">
+                <input class="btn" type="submit" name="submit" value="Login"> <br> <br>
+            </fieldset>
+        </form> <br>
+        <a href="bcvdlogin"><button class="btn1" >BOS Login</button></a>
+        <a href="bcvdlogin"><button class="btn1" >ACOE Login</button></a>
+        <a href="bcvdlogin"><button class="btn1" >COE Login</button></a>
+        <a href="bcvdlogin"><button class="btn1" >VC Login</button><br></a><br>
+        <a href="/forgot" style="color:red;font-size:1rem;"><b>Forgot Password..?</b></a><br>
+       <p><b> New User..?</b></p>
+        <a href="/register">Click here to Sign Up</a>
+    </div>
+    </center>
+    </form>
+</body>
+
+</html>

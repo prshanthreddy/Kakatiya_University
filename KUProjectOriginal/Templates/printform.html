@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>Print</title>
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+
+<style>
+
+	body{
+		border:2px solid black;
+	}
+	tr{
+		font-size:20px;
+		height:30px;
+	}
+	th,td{
+		text-align:left;
+		border:0.5px solid black;
+		padding-left:30px;
+	}
+	button {
+    background-color: #2297f6;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 5px 20px;
+    font-size: 20px;
+}
+	a {
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    background-color: #2297f6;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 5px 20px;
+    font-size: 20px;
+}
+
+a:visited {
+    background-color: lightgreen;
+}
+body {
+    width: 230mm;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 12pt;
+  }
+  * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  .main-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+  }
+  .sub-page {
+    padding: 1cm;
+    height: 297mm;
+  }
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;        
+    }
+    .main-page {
+      margin: 0;
+      border: initial;
+      border-radius: initial;
+      width: initial;
+      min-height: initial;
+      box-shadow: initial;
+      background: initial;
+      page-break-after: always;
+    }
+  }
+</style>
+
+</head>
+
+<body><center>
+ <table style="border: 1px solid black;width:95%">
+		<tr >
+			<td width=70% style="font-size:18px;vertical-align:top;"  ><center>
+                	<p><b><u>Fee Details</u></b>
+                    <br><br>
+                    UPI reference ID : {{obj.upiid}}
+                    <br><br>
+                    Online/phonepay/G.Pay Amount :{{obj.amount}}<br><br>
+                    Date Of Payment :{{obj.paymentdate}}<br>
+                </p></center>
+
+			</td>
+			<td><center>
+                
+                    <img class="photo" style="width:130px;height:150px;border:2px solid black;" src="media/{{obj.photo}}">
+               
+            </center>
+			
+
+			</td>		
+
+		</tr>
+</table>
+<br>
+	<table style="border: 1px solid black;width: 95%;">
+                    <tr>
+                        <th width=50%>Application ID</th>
+                        <td>{{obj.id}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th >Name Of The Candidate</th>
+                        <td>{{obj.cname}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Father Name</th>
+                        <td>{{obj.fname}}</td>
+                    </tr>
+                    <tr>
+                        <th>Social Status</th>
+                        <td>{{obj.caste}}</td>
+                    </tr>
+                    <tr>
+                        <th >Date Of Birth</th>
+                        <td>{{obj.dob}}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile No</th>
+                        <td>{{obj.mob}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Email id </th>
+                        <td>{{obj.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Permanant Address</th>
+                        <td>{{obj.address}}</td>
+                    </tr>
+                    <tr>
+                        <th >Subject/Branch</th>
+                        <td>{{obj.supdept}}</td>
+                    </tr>
+                    <tr>
+                        <th >College/Institution</th>
+                        <td>{{obj.supwadd}}</td>
+                    </tr> 
+                    <tr>
+                        <th >Faculty </th>
+                        <td>{{obj.ftsubmit}}</td>
+                    </tr>
+                    <tr>
+                        <th >M.A/M.Sc. M.Com. /P.G or<br> Its equal examination has passed</th>
+                        <td>{{obj.equalexam}}</td>
+                    </tr>
+                    <tr>
+                        <th style="padding-left:100px;">a.Name of the University</th>
+                        <td>{{obj.university}}</td>
+                    </tr>
+                    <tr>
+                        <th style="padding-left:100px;">b.Month/ Year of passing</th>
+                        <td>{{obj.monthyear}}</td>
+                    </tr>
+                    <tr>
+                        <th >Name of the Supervisor</th>
+                        <td>{{obj.supname}}</td>
+                    </tr>
+                    <tr>
+                        <th>Title of the Thesis</th>
+                        <td>{{obj.titlethesis}}</td>
+                    </tr>
+                     <tr>
+                        <th>Academic year of Admission of Ph.D. Course</th>
+                        <td>{{obj.yearofadd}}</td>
+                    </tr>
+                    <tr>
+                        <th> Pre-Ph.D Passing Month and Year</th>
+                        <td>{{obj.prephdmonthandyear}}</td>
+                    </tr>
+                   
+                    <tr>
+                        <th>Full time /Part-time</th>
+                        <td>
+                           {{obj.time}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th >Are you submitting thesis within your prescribed time? </th>
+                        <td>
+                           {{obj.ptime}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th >Date of submission</th>
+                        <td>{{obj.dateofsubmission}}</td>
+                    </tr>
+            </table>
+            <p style="font-size: 22px;" >Date Of Application :{{obj.myDate}}<br>
+                <b style="float:right;padding-right:30px;text-decoration:none;"><img class="image" style="width:200px;height:50px;float:right;padding-right:30px" src="media/{{obj.sign}}"><br>
+                    Signature </b></p><br><br><br><br>
+        <div class="sub">
+        <button onclick="window.print()">Print</button>
+        <a href="/Approveds">Back</a>
+    </div>
+    </body>
+</center>
+
+</html>

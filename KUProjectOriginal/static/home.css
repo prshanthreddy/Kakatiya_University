@@ -1,0 +1,50 @@
+#kulogo{
+    float: right;
+    height:130px;
+     width:150px;
+}
+#naac{
+    float: left;
+    padding-bottom: 25px;
+}
+table{
+    width: 100%;
+    
+   
+}
+.home01{
+    
+     margin-top: 50px;
+    
+     height: 400px;
+    width: 40%;
+    background-color: rgb(224, 220, 214);
+    border-radius: 8px;
+    
+}
+
+#student{
+ padding-left: 20%;
+ 
+}
+#admin{
+ padding-left: 15%;
+ 
+    
+}
+.img{
+ border: 2px solid black;
+ border-radius: 10px;
+ 
+}
+.img:hover{
+    opacity: 0.7;
+}
+.head{
+    background-color: rgb(0, 0, 0);
+    color: azure;
+}
+.body{
+    background-color: beige;
+    margin-top: -30px;
+}

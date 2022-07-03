@@ -1,0 +1,177 @@
+<html>
+
+<head>
+    <script src="/static/payaproval.js"></script>
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .v {
+            margin-left: 8%;
+            height: 850px;
+            margin-top: 0px;
+            border-left: 2px solid black;
+        }
+
+        .v1 {
+            margin-right: 8%;
+            height: 850px;
+            margin-top: 0px;
+            border-right: 2px solid black;
+        }
+
+        hr.style-two {
+            border: 0;
+            height: 5%;
+            margin-top: 5%;
+            border-top: 0px solid black;
+            border-bottom: 2px solid black;
+            border-collapse: separate;
+            border-spacing: 15px 50px;
+        }
+
+        hr.style-three {
+            border: 0;
+            height: 0;
+            margin-top: 3%;
+            border-top: 1px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        text.text-style {
+            border-collapse: separate;
+            border-spacing: 15px 50px;
+        }
+
+        .btn {
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            font-weight: bold;
+            background-color: rgb(206, 206, 250);
+            padding: 6px 38px;
+            margin: 2px 30px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            color: black;
+            background-color: rgb(208, 213, 255);
+            border: 3px solid black;
+        }
+        select{
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            font-weight: bold;
+            background-color:lightgreen;
+            padding: 6px 38px;
+            margin: 2px 30px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+    </style>
+    
+</head>
+<body >
+
+    <h1>
+        <center style="margin-bottom:-50px; margin-top: 50px;">KAKATIYA UNIVERSITY</center>
+    </h1>
+    <form action="/acoenote1" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div class="v0" </div>
+            <div class="v" </div>
+                <div class="v1" </div>
+                    <hr class="style-two"><br>
+                    <div font-size="15" style="margin-left:20px;margin-right:20px;">
+                        <table>
+                            <tr>
+                                <th width="15%" style="vertical-align: top;">SUBJECT </th>
+                                <td>: <b>{{andy.subject}}</b>-Ph.D.thesis submittedby<b>
+                                        Mr/Ms. {{andy.nameOfSchlr}}-</b> Appointment of<b> <i>Three Examiners</i></b>for
+                                    Evaluation-Reg.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr class="style-three">
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">
+                        <b>Mr/Ms.{{andy.nameOfSchlr}},</b>Research Scholar in
+                        <b>{{andy.subject}}</b>,{{obj.supwadd}} has registered for the degree of Ph.D. in <B>{{andy.subject}} </b> during
+                        the
+                        year
+                        {{obj.yearofadd}}.He/She Worked under
+                        the supervision of<b> {{andy.nameOfSprvsr}}, {{obj.supwadd}}</b>.He/She has passed
+                        Pre-Ph.D.in
+                        <b>{{andy.subject}}</b>,during {{obj.monthyear}}.
+                    </div>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;"><b>Mr/Ms. {{andy.nameOfSchlr}}
+                            ,</b> has now
+                        submitted his
+                        Ph.D.thesis entitled
+                        <b>"{{andy.topic}}",</b>for
+                        evaluation to award the
+                        Ph.D.<br>
+                        Degree of Kakatiya University.
+                    </div>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">The Panel of examiners for
+                        evaluation of
+                        Ph.D.thesis is
+                        received from<b> the Chairperson</b>,Board of Studies in <b>{{andy.subject}}</b> Kakatiya
+                        University.
+                    </div>
+                    <br>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;"><b>Three Examiners</b></b>
+                        may
+                        please be
+                        appointed from the
+                        following:
+                    </div>
+                    <br>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;"> <b><u>One Examiner from
+                                S.No.1
+                                to 3</b>
+                        </u><br>
+                        <ol>
+                            {% for i in vicky %}
+                            <li>{{i.name}},{{i.nameOfUniv}},<b>{{ i.state}} </b>.</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;"><b><u>Two Examination from
+                                S.No.4 to
+                                9</u></b><br>
+                        <ol start="4">
+                            {% for i in vicky1 %}
+                            <li>{{i.name}},{{i.nameOfUniv}},<b>{{ i.state}} </b>.</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                    <br>
+                    <center>
+                            <input type="file" id="myfile" name="myfile" style="width:160px" required>
+                            <br>
+                            <b>File for VC</b>
+                        
+                        <br><br><br>
+                        <select name="stat1" onchange="space(this)" class='apr'>
+                            <option value="Approved">Approve</option>
+                            <option value="Rejected">Reject</option>
+                        </select><br>
+                            <span id="txt" width=50%></span><br>
+                        <br>
+                        <button name="button" value="OK" class="btn" type="submit" onclick="hello()">Submit</button>
+                    </center>
+                </div>
+            </div>
+        </div>    
+    </form>
+
+</body>
+
+</html>

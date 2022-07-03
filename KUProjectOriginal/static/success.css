@@ -1,0 +1,16 @@
+.btn {
+    height: 35px;
+    width: 200px;
+    color: rgb(206, 206, 250);
+    background-color: green;
+    border: 2px solid black;
+    border-radius: 3px;
+    font-size: 18px;
+}
+.btn:hover {
+    color: black;
+    background-color: rgb(222, 220, 245);
+    cursor: pointer;
+    height: 37px;
+    width: 205px;
+}

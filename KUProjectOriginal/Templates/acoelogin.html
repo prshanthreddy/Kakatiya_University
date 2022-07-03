@@ -1,0 +1,29 @@
+<!Doctype html>
+
+<head>
+    <link rel="stylesheet" href="/static/payverify.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+    
+</head>
+<body>
+    <div class="main">
+        <div class="logo">
+            <img src="/static/kulogo.jpeg" width="100" height="100">
+        </div>
+        <big><big><b><big><big> <big> EXAMINATION BRANCH<br></big></b></big></big></big></big>
+        <big><big><big> KAKATIYA UNIVERSITY<br></big></big></big>
+        <big>Warangal-506 009</big>
+        <h2 style="margin-bottom:03px;"><u>Additional Controller Of Examinations</u></h2>
+        {% csrf_token %}
+        <br><br><a href="/acoenote1"><button class="btn" style="color:black;">Note 1 List</button></a>
+        <br><br><br><a href="/acoenote2"><button class="btn" style="color:black;">Note 2 List</button></a>
+        <br><br><br><a href="/acoenote3"><button class="btn" style="color:black;">Note 3 List</button></a>
+        <br><br><br><a href="/bosprintlist"><button class="btn" style="color:black;">Bos Panel Print</button></a>
+        <br><br><br><a href="/note1print"><button class="btn" style="color:black;">Note 1 Print</button></a>
+        <br><br><br><a href="/note2print"><button class="btn" style="color:black;">Note 2 Print</button></a>
+        <br><br><br><a href="/note3print"><button class="btn" style="color:black;">Note 3 Print</button></a>
+        <br><br><br><a href="/logout"><button class="btn" style="color:black;">Log out</button></a>
+    </div>
+</body>
+</div>
+</html>

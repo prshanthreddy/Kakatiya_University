@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>Registration</title>
+
+    <link rel="stylesheet" href="/static/validate.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+</head>
+
+<body>
+    <form>
+        {% csrf_token %}
+        <div class="whole">
+            <div class="main">
+                <div class="logo">
+                    <img src="/static/kulogo.jpeg" width="100" height="100">
+                </div>
+                <big><big>
+                    <b><big><big> <big> KAKATIYA UNIVERSITY<br></big><b>
+                    </big></big></big></big>
+                <big><b>Warangal-506 009</b></big>
+                <h2 style="margin-bottom:03px;">FORM OF APPLICATION FOR SUBMISSION OF Ph.D THESIS.</h2>
+            </div>
+            <div id="para"><center>
+                <p><h2><b>Fee Details:</h2></b>
+                    
+                    
+                    <b>UPI reference ID</b> :{{upiid}}
+                    <br><br>
+                    <b>Online/phonepay/G.Pay/Amount</b> : {{amount}}<br><br>
+                    <b>Date Of Payment</b>:{{paymt}}<br><br>
+                    <b>Receipt Of Payment</b>:<a class="btn" href="media/{{payss}}">View File</a>
+                </p></center>
+            </div>
+            <br>
+            <center>
+                <table style="margin: auto;width: 90%;">
+                
+                        <tr>
+                            <td>Name Of The Candidate
+                            </td>
+                            <td> {{cname}}</td>
+                        </tr>
+                        <tr>
+                            <td>Father Name</td>
+                            <td> {{fname}}</td>
+                        </tr>
+                        <tr>
+                            <td>Social Category </td>
+                            <td> {{caste}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date Of Birth</td>
+                            <td> {{dob}}</td>
+                        </tr>
+                        <tr>
+                            <td>Photo</td>
+                            <td> <a class="btn" href="media/{{photo}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile No</td>
+                            <td> {{mob}}</td>
+                        </tr>
+                        <tr>
+                            <td>E-mail id</td>
+                            <td> {{mail}}</td>
+                        </tr>
+                        <tr>
+                            <td>Permanant Address</td>
+                            <td> {{addr}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Subject/Branch</td>
+                            <td> {{supdept}}</td>
+                        </tr>
+                        <tr>
+                            <td>College/Institution</td>
+                            <td> {{supwadd}}</td>
+                        </tr>
+                        <tr>
+                            <td>Faculty </td>
+                            <td> {{ftsubmit}}</td>
+                        </tr>
+                        <tr>
+                            <td>M.A/M.Sc. M.Com. /P.G <br><i><small>(or Its equal examination has passed)</small></i></td>
+                            <td> {{equalexam}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 100px;">a. Name of the University</td>
+                            <td> {{university}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 100px;">b. Month/ Year of passing</td>
+                            <td>{{monthyear}}</td>
+                        </tr>
+                        <tr>
+                            <td>Name of the Supervisor</td>
+                            <td> {{supname}}</td>
+                        </tr>
+             
+                        <tr>
+                            <td>Ph.D. Admission Order </td>
+                            <td> <a class="btn" href="media/{{ador}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Supervisors' Certificate</td>
+                            <td> <a class="btn" href="media/{{supre}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Title of the thesis</td>
+                            <td> {{titlethesis}}</td>
+                        </tr>
+                        <tr>
+                        <td>Joining Report </td>
+                        <td><a class="btn" href="media/{{th}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Academic Year of Admission into Ph.D. Program</td>
+                            <td> {{yearofadd}}</td>
+                        </tr> 
+                        <tr>
+                            <td>Full time /Part-time</td>
+                            <td> {{time}}</td>
+                        </tr>
+                        <tr>
+                            <td>Are you submitting thesis within your prescribed time </td>
+                            <td>
+                                 {{ptime}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Have you taken time bar permission? <br>(if Yes Attach File)</td>
+                            <td> {{otime}} / {{otf}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pre-Ph.D Memo</td>
+                            <td><a class="btn" href="media/{{prephd}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Pre-Ph.D Passing Month and Year</td>
+                            <td>{{prephdmonthandyear}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Research Paper <br> (Attested by the Supervisor,Bos and dean)</td>
+                            <td> <a class="btn" href="media/{{article}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Synopsis<br>(Soft Copy pdf)</td>
+                            <td> <a class="btn" href="media/{{syn}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td> Thesis<br>(Soft Copy pdf)</td>
+                            <td> <a class="btn" href="media/{{fthesis}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Plagiarism Certificate</td>
+                            <td> <a class="btn" href="media/{{pc}}">View File</a></td>
+                        </tr>
+                        <tr>
+                            <td>Date of submission</td>
+                            <td> {{date}}</td>
+                        </tr>
+                        <tr>
+                            <td>No Due Certificate from the Principal Office</td>
+                            <td> <a class="btn" href="media/{{noc}}">View File</a></td>
+                        </tr>
+                    
+                </table>
+            </center>
+            <br>
+            <br>
+            <div class="bottom">
+                Date Of Application :{{mydate}}<br><br>
+                Signature Of the Applicant :<a class="btn" href="media/{{sign}}">View File</a>
+            </div>
+            <br>
+        </div>
+        <br>
+        <br>
+        <div class="sub">
+            <a href="success" class="btn">Submit</a>
+            <a class="btn" onClick="javascript:history.go(-1);">Edit</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        </div>
+    </form>
+</body>
+
+</html>

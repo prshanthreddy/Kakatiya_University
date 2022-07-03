@@ -1,0 +1,49 @@
+.whole {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: auto;
+
+}
+
+.main {
+    width: auto;
+    text-align: center;
+    border: 2px;
+    font-family: copperplate;
+}
+
+
+.btn {
+    height: 35px;
+    width: 150px;
+    color: rgb(206, 206, 250);
+    border-radius: 7px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color:black;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    background-color: green;
+}
+
+.btn:hover {
+    color: black;
+    background-color: lightblue;
+    cursor: pointer;
+    height: 37px;
+    width: 151px;
+}
+/* option{
+    
+    width: 180px;
+    height: 35px;
+    
+} */
+
+select{
+  width: 181px;
+  height: 35px;
+  background-color:gray;
+  color: beige;
+}

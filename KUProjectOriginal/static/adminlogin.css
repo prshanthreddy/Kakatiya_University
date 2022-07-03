@@ -1,0 +1,132 @@
+.whole {
+    display: block;
+    border: 2px solid black;
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+
+}
+
+.main {
+    text-align: center;
+    border: 2px;
+}
+
+.apr {
+    width: 150px;
+    height: 25px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.area {
+    margin-left: 30px;
+    width: 350px;
+    height: 125px;
+    font-size: 18px;
+}
+
+.main {
+    width: auto;
+    text-align: center;
+    border: 2px;
+    font-family: copperplate;
+}
+
+#para {
+    font-size: 22px;
+    width: auto;
+    border: 2px solid black;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+table,
+th,td{
+    border: 1px solid black;
+    border-radius:1px;
+}
+
+th,
+td {
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+    
+
+}
+
+th {
+    width: 55%;
+    padding-left: 30px;
+    
+}
+
+.info {
+    border: none;
+    width: 50%;
+}
+
+.sign {
+    float: right;
+}
+
+.bottom {
+    font-size:20px;
+    margin-left:50px;
+}
+
+.sub {
+    text-align: center;
+}
+
+.sub:hover {
+    color: aliceblue;
+
+}
+.apr{
+    margin-left:50px;
+}
+a {
+    text-decoration: none;
+}
+
+.btn {
+    height: 35px;
+    width: 150px;
+    color: rgb(199, 216, 210);
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color:rgb(206, 206, 250);
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    background-color: #18447a;
+}
+.btn1 {
+    height: 35px;
+    width: 150px;
+    color: rgb(206, 206, 250);
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color:black;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    background-color: green;
+}
+
+.btn:hover {
+    color: black;
+    background-color: lightblue;
+    cursor: pointer;
+    height: 37px;
+    width: 151px;
+}
+.btn1:hover {
+    color: black;
+    background-color: lightblue;
+    cursor: pointer;
+    height: 37px;
+    width: 151px;
+}

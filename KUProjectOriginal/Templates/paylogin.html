@@ -1,0 +1,43 @@
+<!Doctype html>
+
+<head>
+    <link rel="stylesheet" href="/static/paylogin.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="logo">
+            <img src="/static/kulogo.jpeg" width="100" height="100">
+        </div>
+        <big><big>
+            <b><big><big> <big> KAKATIYA UNIVERSITY<br></big><b>
+            </big></big></big></big>
+        <big><b>Warangal-506 009</b></big>
+        <h2 style="margin-bottom:03px;"><u><b>Verification and AR Accounts Login</b></u></h2><br><br><br>
+        <center>
+        <form action="/logverify" name='myform' method="post">
+            {% csrf_token %}
+                <fieldset class="account-info"><br>
+                    <label>
+                        Username:
+                        <input type="text" name="user"  id="phno">
+                    </label>
+                    <label>
+                        Password :
+                        <input id="two" class="info" type="password" name="pass">
+                    </label>
+                </fieldset>
+                <fieldset class="account-action">
+                    <input class="btn" type="submit" name="submit" value="Login"> <br> <br>
+                </fieldset>
+            </center>
+        </form>
+        <br>
+        <a href="/ponewpassword" style="color:rgb(94, 33, 144);">Generate New Password..</a>
+    </div>
+
+</body>
+
+</html>

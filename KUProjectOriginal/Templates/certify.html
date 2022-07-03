@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Certificate</title>
+    <link rel="stylesheet" href="/static/certify.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+</head>
+
+<body>
+
+    <div class="whole">
+
+        <div class="container">
+            <div class="sub1" id="first">
+                <h2 style="font-style: italic;">Dr.Md.Mustafa<br><small style="opacity: 0.5;font-style: italic;">
+                    Associate Professor of Botany <br></small>
+                <small style="font-style: italic;"> Addl.Controller of Examinations</small><br>
+                (Confidential)
+
+                </h2>
+            </div>
+            <div class="sub2" id="second">
+                <center>
+                    <img src="/static/kulogo.jpeg" height="130px" width="130px" alt="">
+                </center>
+            </div>
+            <div class="sub3" id="third">
+                <big><b><big>KAKATIYA UNIVERSITY</big></big></b>
+                <b><big>Vidyaranyapuri</big></b> <br>
+                <b>WARANGAL-506 009(T.S)</b>
+            </div>
+        </div>
+        <div class="sub4">
+            <big><b> <big><big>Accredited with 'A' Grade by NAAC</big></big></b></big>
+        </div>
+        <hr style="width: 90%;border-width: 2px;background-color: black;">
+        <div class="sub5">
+             <b>Mobile:9440582638, Off:0870-2453800, Extn.511, Fax:0870-2438875, E-mail:researchconfidentail@kakatiya.ac.in</b>
+        </div>
+        <hr style="width: 90%;border-width: 2px;background-color: black;">
+        <div class="sub6">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id no:</th>
+                        <td>{{obj.id}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date: </th>
+                        <td>{{obj.dateofsubmission}}
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="sub7">
+            <h1 style="font-family: monospace;"><big>CERTIFICATE</big></h1>
+        </div>
+        <br>
+        <div class="sub8">
+            This is to certify that <b>Mr./Ms. {{obj.cname.title}}</b>, S/D/o. <b>{{obj.fname.title}}</b>, Research Scholar in <b>{{obj.supdept}}</b>, {{obj.supwadd}}, has submitted his/her Ph.D. thesis entitled
+            <b>"{{obj.titlethesis}}"</b>, under the supervision of Prof/Dr. <b> {{obj.supname}}</b>, Department of <b>{{obj.supdept}}</b>,
+            {{obj.supwadd}}, on <b style="text-decoration: underline;">{{obj.dateofsubmission}}</b> for the award of Ph.D.Degree in <b>{{obj.supdept}}</b> of Kakatiya University, Warangal.
+        </div>
+        <br>
+        <br>
+        <div class="imgdiv" style="text-align: right;margin-right: 90px;margin-bottom: -20px;">
+            <img class="photo" src="/static/vvvv.jpg" width="200px" height="50px" alt="your pic">
+        </div>
+        <div class="sub9">
+            <h2 style="font-size:20px;" >Addl. Controller of Examinations<br>(Confidential)</h2>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr style="width: 90%;border-width: 2px;background-color: blac">
+
+        <div class="sub">
+            <button onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+    <link rel="stylesheet" href="/static/adminlogin.css">
+
+    <script src="/static/adminlogin.js">
+        
+    </script>
+    
+</head>
+
+<body>
+    <form method="post" action="/test">
+        {% csrf_token %}
+        <div class="whole">
+            <div class="main">
+                <div class="logo">
+                    <img src="/static/kulogo.jpeg" width="100" height="100">
+                </div>
+                <big><big>
+                    <b><big><big> <big> KAKATIYA UNIVERSITY<br></big><b>
+                    </big></big></big></big>
+                <big><b>Warangal-506 009</b></big>
+                <h2 style="margin-bottom:03px;">FORM OF APPLICATION FOR SUBMISSION OF Ph.D THESIS.</h2>
+            </div>
+
+            <br>
+            <center >
+                <table style="margin: auto;width: 90%;">
+                    <thead>
+                        <tr>
+                            <th>Application ID
+                            </th>
+                            <td>: {{obj.id}}</td>
+                        </tr>
+                        <tr>
+                            <th>Name of the Candidate <small style="font-style: italic;">(In Capital)</small>
+                                Shri/Mr./Ms.<br><small style="font-style: italic;">(as per Pre-Ph.D
+                                    Memo)</small>
+                            </th>
+                            <td>: {{obj.cname}}</td>
+                        </tr>
+                        <tr>
+                            <th>Father Name</th>
+                            <td>: {{obj.fname}}</td>
+                        </tr>
+                        <tr>
+                            <th>Social Category</th>
+                            <td>: {{obj.caste}}</td>
+                        </tr>
+                        <tr>
+                            <th>Date of Birth</th>
+                            <td>: {{obj.dob}}</td>
+                        </tr>
+                        <tr>
+                            <th>Photo <small style="font-style: italic;">(Passport Size)</small></th>
+                            <td>: <a target="_blank" href="media/{{obj.photo}}" ><input type="button"class="btn" value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th>Mobile No</th>
+                            <td>: {{obj.mob}}</td>
+                        </tr>
+                        <tr>
+                            <th>E-mail id</th>
+                            <td>: {{obj.email}}</td>
+                        </tr>
+                        <tr>
+                            <th>Permanant Address</th>
+                            <td>: {{obj.address}}</td>
+                        </tr>
+
+                         <tr>
+                            <th>Subject/Branch</th>
+                            <td>: {{obj.supdept}}</td>
+                        </tr> 
+                        <tr>
+                            <td>College/Institution</td>
+                            <td>: {{obj.supwadd}}</td>
+                        </tr>
+                        <tr>
+                            <th>Faculty</th>
+                            <td>: {{obj.ftsubmit}}</td>
+                        </tr>
+                        <tr>
+                            <td>M.A/M.Sc. M.Com. /P.G <br><i><small>(or Its equal examination has passed)</small></i></td>
+                            <td>: {{obj.equalexam}}</td>
+                        </tr>
+                        <tr>
+                            <th style="padding-left: 100px;">a. Name of the University</th>
+                            <td>: {{obj.university}}</td>
+                        </tr>
+                         <tr>
+                            <th style="padding-left: 100px;">b. Month/ Year of Passing</th>
+                            <td>: {{obj.monthyear}}</td>
+                        </tr> 
+                        <tr>
+                            <th>Name of the Supervisor</th>
+                            <td>: {{obj.supname}}</td>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <th>Ph.D. Admission Order </th>
+                            <td>: <a target="_blank" href="/media/{{obj.admissionorder}}" ><input type="button"class="btn"value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th>Supervisor's Certificate<small style="font-style: italic;">(Attested by Dean,Head and
+                                    BoS)</small< /th>
+                            <td>: <a target="_blank" href="/media/{{obj.supreport}}" ><input type="button"class="btn"value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th>Title of the Thesis</th>
+                            <td>: {{obj.titlethesis}}</td>
+                        </tr>
+                        <tr>
+                            <th>Joining Report</small></th>
+                            <td>: <a target="_blank" href="/media/{{obj.tthesis}}" ><input type="button"class="btn" value="View File"></a></td>
+                        </tr>
+                      <tr>
+                            <th>Academic year of Admission into Ph.D. Program</th>
+                            <td>: {{obj.yearofadd}}</td>
+                        </tr> 
+                        <tr>
+                            <th>Full time /Part-time</th>
+                            <td>: {{obj.time}}</td>
+                        </tr>
+                        <tr>
+                            <th>Are you Submitting Thesis within Prescribed Time? </th>
+                            <td>
+                                : {{obj.ptime}}
+                            </td>
+                        </tr>
+                        <tr>
+                            {% if obj.onTime %}
+                            <th>If No, have you taken Time Bar Permission? <br><small style="font-style: italic;">(if
+                                    Yes,
+                                    Attach
+                                    File)</small></th>
+                            <td>: <a target="_blank" href="/media/{{obj.onTimef}}"><input type="button" class="btn" value="View File"></a> /
+                                {{obj.onTime}}
+                            </td>
+                             {% endif %} 
+                        </tr>
+                        <tr>
+                            <th>Pre-Ph.D Memo</th>
+                            <td>: <a target="_blank" href="/media/{{obj.prephd}}" ><input type="button"class="btn"value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th> Pre-Ph.D Passing Month and Year</th>
+                            <td>{{obj.prephdmonthandyear}}</td>
+                        </tr>
+                        <tr>
+                            <th>Research paper <br> <small style="font-style: italic;">(Attested by the
+                                    Supervisor,Head,BoS and Dean) </small></th>
+                            <td>: <a target="_blank" href="/media/{{obj.article}}" ><input type="button"class="btn"value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th>Synopsis<br><small style="font-style: italic;">(Soft Copy pdf)</small></th>
+                            <td>: <a target="_blank" href="/media/{{obj.synopsis}}"><input type="button" class="btn" value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th>Thesis<br><small style="font-style: italic;">(Soft Copy pdf)</small></th>
+                            <td>: <a target="_blank" href="/media/{{obj.fullthesis}}" ><input type="button"class="btn" value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th>Plagiarism Certificate</th>
+                            <td>: <a target="_blank" href="/media/{{obj.pc}}"><input type="button" class="btn" value="View File"></a></td>
+                        </tr>
+                        <tr>
+                            <th>Date of submission</th>
+                            <td>: {{obj.dateofsubmission}}</td>
+                        </tr>
+                        <tr>
+                            <th>No Due Certificate from the Principal Office</th>
+                            <td>: <a target="_blank" href="/media/{{obj.noc}}"><input type="button" class="btn" value="View File"></a></td>
+                        </tr>
+                    </thead>
+                </table>
+            </center>
+            <br>
+            <br>
+            <div class="bottom">
+                Date Of Application :{{obj.myDate}}<br><br>
+                Signature Of the Applicant :<a target="_blank" href="media/{{obj.sign}}" ><input type="button"class="btn" value="View File"></a>
+            </div>
+            <br>
+            <select name="stat" onchange="space(this)" class='apr'>
+                <option value="Approved">Approve</option>
+                <option value="Rejected">Reject</option>
+            </select><br>
+            <span id="txt"></span>
+        </div>
+        <br>
+        <br>
+        <div class="sub">
+            <input type="submit" name="sanjay" class="btn1" value="Submit">
+        </div>
+        <br>
+        <br>
+        <br>
+        </div>
+        
+    </form>
+</body>
+
+</html>

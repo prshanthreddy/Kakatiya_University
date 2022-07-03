@@ -1,0 +1,74 @@
+.whole {
+    text-align: center;
+    border: 2px;
+}
+.main{
+    font-family:copperplate;
+}
+.btn {
+    height: 35px;
+    width: 150px;
+    color: rgb(206, 206, 250);
+    background-color: green;
+    border: 2px solid black;
+    border-radius: 3px;
+    font-size: 18px;
+}
+
+.btn:hover {
+    color: black;
+    background-color: rgb(211, 221, 255);
+    cursor: pointer;
+    height: 37px;
+    width: 155px;
+}
+
+th,
+td {
+    padding: 25px;
+    font-size: 25px;
+}
+
+th {
+    text-align: center;
+}
+
+.apr {
+    width: 150px;
+    height: 25px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.area {
+    margin-left: 30px;
+    width: 350px;
+    height: 125px;
+    font-size: 18px;
+}
+.apr{
+    position: relative;
+    font-family: Arial;
+}
+  
+
+.btn {
+    height: 35px;
+    width: 150px;
+    color: rgb(199, 216, 210);
+    border-radius: 7px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color:black;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    background-color: green;
+}
+
+.btn:hover {
+    color: black;
+    background-color: lightblue;
+    cursor: pointer;
+    height: 37px;
+    width: 151px;
+}

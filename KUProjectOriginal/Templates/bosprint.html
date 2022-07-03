@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Application</title>
+    <link rel="stylesheet" href="/static/bosfill.css">   
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+   
+</head>
+<body > 
+{% csrf_token %}
+        <div class="whole">
+            <div class="para">
+                <p>
+                <p style="text-align: right;">
+                    Date :<input type="text" id="date" name="myDate" style="width:100px;height: 30px;font-size: 20px;"
+                        onchange="datefun()" readonly></p>
+                <br>
+                <p class="letterhead">
+                    To<br>The COE,<br>Kakatiya University,<br>Warangal.</p>
+                </p>
+                <table style="border-width:0px;">
+                    <tr>
+                        <td class="toper" width="50%">Scholar ID </td>
+                        <td class="toper">: {{andy.cid}}
+                    </tr>
+                    <tr>
+                        <td class="toper">Name of the Scholar </td>
+                        <td class="toper"> : {{andy.nameOfSchlr}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="toper">Subject </td>
+                        <td class="toper"> : {{andy.subject}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="toper">Topic </td>      
+                        <td class="toper"> : {{andy.topic}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="toper">Name of the Supervisor </td>
+                        <td class="toper"> : {{andy.nameOfSprvsr}}
+                        </td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+            <table style="border: 0px solid black;margin: auto;width: 95%;">
+                <tr>
+                    <th width=4%>Sno.</th>
+                    <th>Name of the Examiner</th>
+                    <th>Department</th>
+                    <th>Name of University</th>
+                    <th>State </th>
+                    <th>Mobile No.</th>
+                    <th>Email id.</th>
+                </tr>
+                {% for i in vicky %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td style="text-align:left;padding-left:10px;">{{i.name}}</td>
+                    <td style="text-align:left;padding-left:10px;">{{i.dept}}</td>
+                    <td style="text-align:left;padding-left:10px;">{{i.nameOfUniv}}</td>
+                    <td style="text-align:left;padding-left:10px;">{{i.state}}</td>
+                    <td>{{i.mobile}}</td>
+                    <td style="text-align:left;padding-left:10px;">{{i.email}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <br>
+            <div style="text-align:right;margin-right:70px;margin-bottom: -10px;">
+                <img src="static/sign.png" width="250px" height="70px" >
+            </div>
+            <div style=" float: right; margin-right: 50px;">
+                   {{andy.bname}}<br>
+                 <b style="text-align:center;"> Chairperson BOS, {{andy.subject}} </b>
+            </div>
+            <br>
+            <br>
+            <div class="sub">
+                <button class="btn btn-primary " onclick="window.print()">Print </button>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+
+    <script>
+        const dateObj = new Date();
+        const month = dateObj.getMonth()+1;
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const year = dateObj.getFullYear();
+        const output = day + '/' + month+ '/' + year;
+        document.getElementById('date').value = output;
+    </script>
+</body>
+
+</html>

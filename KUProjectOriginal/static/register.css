@@ -1,0 +1,49 @@
+h1 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+form {
+    border: 1px solid #c6c7cc;
+    border-radius: 5px;
+    font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    width: 340px;
+    background-color:rgb(206, 206, 206);
+}
+.main {
+    text-align: center;
+    border: 2px;
+    font-family:copperplate;
+    height: calc(100% - 180px);
+}
+.sub {
+    text-align: center;
+}
+.sub:hover {
+    color: aliceblue;
+}
+.btn {
+    height: 35px;
+    width: 200px;
+    color: rgb(206, 206, 250);
+    border-radius: 3px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color:green;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    background-color: green;
+}
+
+.btn:hover {
+    color: black;
+    background-color: rgb(202, 214, 247);
+    cursor: pointer;
+    height: 37px;
+    width: 205px;
+}
+.show{
+    margin-left:52%;
+    text-align:left;
+    font-size:small;
+}

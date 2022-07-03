@@ -1,0 +1,129 @@
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .v {
+            margin-left: 8%;
+            height: 850px;
+            margin-top: 0px;
+            border-left: 2px solid black;
+        }
+
+        .v1 {
+            margin-right: 8%;
+            height: 850px;
+            margin-top: 0px;
+            border-right: 2px solid black;
+        }
+
+        hr.style-two {
+            border: 0;
+            height: 5%;
+            margin-top: 5%;
+            border-top: 0px solid black;
+            border-bottom: 2px solid black;
+            border-collapse: separate;
+            border-spacing: 15px 50px;
+        }
+
+        hr.style-three {
+            border: 0;
+            height: 0;
+            margin-top: 3%;
+            border-top: 1px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        text.text-style {
+            border-collapse: separate;
+            border-spacing: 15px 50px;
+        }
+
+        .btn {
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            font-weight: bold;
+            background-color: rgb(206, 206, 250);
+            padding: 6px 38px;
+            margin: 2px 30px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            color: black;
+            background-color: rgb(208, 213, 255);
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body style="line-height: 25px;" >
+
+    <h1 >
+        <center style="margin-bottom:-50px; margin-top: 50px;">KAKATIYA UNIVERSITY</center>
+    </h1>
+    <form action="/coenote3" method="post">
+        {% csrf_token %}
+        <div class="v0">
+            <div class="v"> 
+                <div class="v1">
+                    <hr class="style-two"><br>
+                    <div font-size="15" style="margin-left:20px;margin-right:20px;">
+                        <table>
+                            <tr>
+                                <th width="15%" style="vertical-align: top;">SUBJECT </th>
+                                <td>: <b>{{andy.subject}}-Mr./Ms.{{andy.nameOfSchlr}}-</b>Ph.D.Open Viva-Voce Conducted-Issue of <b>Press Note-</b>Reg.</text></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr class="style-three">
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">In compliance with the orders of the Vice-Chancellor at Para(08),a letter issued by this office vide letter No.{{andy.s4}}/E1/Ph.D./KU/{{andy.s5}}, dated, {{andy.s6}}.</text>
+                    </div>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">The Ph.D.Open Viva-Voce of <b>Mr./Ms.{{andy.nameOfSchlr}}</b> was conducted on <b> {{andy.s8}}</b> at {{andy.s9}}</b> in the Department of {{andy.subject}}, Kakatiya University,Warangal.The examiners, <b>{{vicky.name}}</b>(External Examiner), {{vicky.nameOfUniv}}, {{vicky.state}}(Online), the Dean,Faculty of {{vicky.dept}}, the Head Department of {{andy.subject}}, the Chairperson Board of Studies in {{vicky.dept}} and {{andy.nameOfSprvsr}}(Supervisor), Department of {{andy.subject}}, KU,({{andy.mode}})were present.
+                    </div>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;">The examiners were satisfied with the answers given by the candidate at the Viva-Voce and recommended for the award of Ph.D.Degree in <b>{{andy.subject}}</b>
+                    to the candidate. Kindly see the minutes at Flag 'A'&'B'.
+                    <br>
+                    <b>Minutes of Viva-Voce</b> :<a target="_blank"href="/media/{{andy.f4}}" ><input type="button"class="btn"value="View File"></a>
+                    </div>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;"> If agreed, the <b>Press Note </b>will be issue and the result of the candidate will be declared so as to affect from the date of conduct of Viva-Voce and the matter
+                    may be placed before the University Executive Council for ratifiction.</text>
+                    </div>
+                    <br>
+                    <div style="text-align: justify; margin-left: 20px;margin-right: 20px;q">Submitted for approval
+                    </div>
+                    <br>
+                       <center> <div>
+                            <input type="file" id="myfile" name="myfile" style="width:160px" required>
+                            <br>
+                            <b>C.O.E</b>
+                        </div>
+                        <br>
+                        <button name="button" value="OK" class="btn" type="submit" onclick="hello()">Submit</button>
+                    </center>
+                </div>
+            </div>
+        </div>    
+    </form>
+    <script>
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+        const dateObj = new Date();
+        const month = monthNames[dateObj.getMonth()];
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const year = dateObj.getFullYear();
+        const output = day + '/' + (Math.abs(monthNames.indexOf(month + 1)) + 2) + '/' + year;
+        document.getElementById('date').value = output;
+    </script>
+</body>
+
+</html>

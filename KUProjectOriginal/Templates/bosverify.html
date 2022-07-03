@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Application</title>
+    <link rel="stylesheet" href="/static/bosfill.css">
+    <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
+    
+</head>
+<body>
+
+        {% csrf_token %}
+        <div class="whole">
+            <div class="para">
+                <p>
+                <p style="text-align: right;">
+                    Date :<input type="text" id="date" name="myDate" style="width:100px;height: 30px;font-size: 20px;"
+                        onchange="datefun()" readonly></p>
+                <br>
+                <p class="letterhead">
+                    To<br>The COE,<br>Kakatiya University,<br>Warangal.</p>
+                </p>
+                <table style="border-width:0px;">
+                    <tr>
+                        <td class="toper">Name of the Scholar </td>
+                        <td class="toper"> : {{andy.nameOfSchlr}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="toper">Subject </td>
+                        <td class="toper"> : {{andy.subject}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="toper">Topic </td>      
+                        <td class="toper"> : {{andy.topic}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="toper">Name of the Supervisor </td>
+                        <td class="toper"> : {{andy.nameOfSprvsr}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <table style="border: 0px solid black;margin: auto;width: 95%;">
+                <tr>
+                    <th width=4%>Sno.</th>
+                    <th>Name of the Examiner</th>
+                    <th>State </th>
+                    <th>Name of University</th>
+                    <th>Mobile No.</th>
+                    <th>Email id.</th>
+                </tr>
+                {% for i in vicky %}
+                <tr>
+                    <td>*</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.state}}</td>
+                    <td>{{i.nameOfUniv}}</td>
+                    <td>{{i.mobile}}</td>
+                    <td>{{i.email}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <div style="text-align:left;margin-left:40px;font-size:17px;color:red;">
+                *This Pannel is <b>Rejected</b> for reason : <span style="color:black;">{{andy.acoeNote1Reason.upper}}</span>
+            </div>
+            <br><br><br><br>
+            <div style="text-align:right;margin-right:70px;margin-bottom: -10px;">
+                <img src="static/sign.png" width="250px" height="70px" >
+            </div>
+            <div style=" text-align: right; margin-right: 50px;">
+                <h2>Additional COE
+                </h2>
+            </div>
+            <br>
+            <br>
+        </div>
+
+    <script>
+        const dateObj = new Date();
+        const month = dateObj.getMonth()+1;
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const year = dateObj.getFullYear();
+        const output = day + '/' + month+ '/' + year;
+        document.getElementById('date').value = output;
+    </script>
+</body>
+
+</html>

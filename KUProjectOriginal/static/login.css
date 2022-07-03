@@ -1,0 +1,108 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url("Copperplate.woff2");
+}
+.whole {
+
+    width: 1000px;
+    border: 2px solid black;
+    margin: auto;
+}
+
+h1 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.main {
+    text-align: center;
+    border: 2px;
+    font-family: myFirstFont;
+    letter-spacing: 1px;
+}
+
+
+.para {
+    width: 90%;
+    margin: auto;
+    font-size: 20px;
+    border: 2px solid black;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+
+th,
+td {
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+}
+
+th {
+    width: 55%;
+    padding-left: 30px;
+}
+
+.info {
+    border: none;
+    width: 50%;
+}
+
+.sign {
+    padding-left: 40px;
+    float: right;
+}
+
+.bottom {
+    padding-left: 50px;
+    font-size: large;
+}
+
+.sub {
+    text-align: center;
+}
+
+.sub:hover {
+    color: aliceblue;
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+}
+
+a:visited {
+    background-color: lightgreen;
+}
+
+.btn {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    background-color: rgb(206, 206, 250);
+    padding: 6px 38px;
+    margin: 2px 30px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    color: white;
+    background-color: rgb(208, 213, 255);
+    border: 3px solid black;
+}
+
+input {
+    background-color: rgb(232, 232, 232);
+    border-radius: 5px;
+}

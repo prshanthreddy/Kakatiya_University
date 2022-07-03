@@ -1,0 +1,58 @@
+h1 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.main {
+    text-align: center;
+    border: 2px;
+    font-family:copperplate;
+
+}
+.sub {
+    text-align: center;
+}
+.sub:hover {
+    color: aliceblue;
+}
+.btn {
+    height: 35px;
+    width: 200px;
+    color: rgb(206, 206, 250);
+    border-radius: 7px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color:green;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    background-color: green;
+}
+table,
+th,
+td {
+    border-collapse: collapse;
+
+}
+
+th,
+td {
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+}
+
+th {
+    width: 55%;
+    padding-left: 30px;
+}
+.btn:hover {
+    color: black;
+    background-color: rgb(199, 216, 210);
+    cursor: pointer;
+    height: 37px;
+    width: 205px;
+}
+.show{
+    margin-left:52%;
+    text-align:left;
+    font-size:small;
+}
