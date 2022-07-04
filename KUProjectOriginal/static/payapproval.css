@@ -1,6 +1,9 @@
 .whole {
     text-align: center;
-    border: 2px;
+    border: 2px solid black;
+    width: fit-content;
+    margin: auto;
+    padding: 50px;
 }
 .main{
     font-family:copperplate;
@@ -22,15 +25,18 @@
     height: 37px;
     width: 155px;
 }
-
+table, th,td{
+    border: 1px solid black;
+}
 th,
 td {
-    padding: 25px;
+    padding: 20px;
     font-size: 25px;
+    border-collapse: collapse;
 }
 
 th {
-    text-align: center;
+    text-align: left;
 }
 
 .apr {

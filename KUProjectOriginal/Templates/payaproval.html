@@ -22,26 +22,26 @@
         <h2 style="margin-bottom:03px;"><u>Verify The Above Payment Details</u></h2><br><br><br>
         <form action="/payverify" name='myform' method="post">{% csrf_token %}
             <center>
-                <table border=0px width="70%">
+                <table >
                     <tr>
-                        <th width=50%>UPI id</th>
-                        <td>: {{objs.upiid}}</td>
+                        <th>UPI id</th>
+                        <td> {{objs.upiid}}</td>
                     </tr>
                     <tr>
                         <th>Amount</th>
-                        <td>: {{objs.amount}}</td>
+                        <td> {{objs.amount}}</td>
                     </tr>
                     <tr>
                         <th>paymentdate</th>
-                        <td>: {{objs.paymentdate}}</td>
+                        <td> {{objs.paymentdate}}</td>
                     </tr>
                     <tr>
                         <th>Proof of Payment</th>
-                        <td>: <a target="_blank" href="/media/{{objs.Paymentss}}"><input type="button"class="btn" value=View File></a></td>
+                        <td> <a target="_blank" href="/media/{{objs.Paymentss}}"><input type="button"class="btn" value=View File></a></td>
                     </tr>
                     <tr>
                         <th valign='top'>Status</th>
-                        <td>: <select name="stat" onchange="space(this)" class='apr'>
+                        <td> <select name="stat" onchange="space(this)" class='apr'>
                                 <option value="Approved">Approve</option>
                                 <option value="Rejected">Reject</option>
                             </select><br>
