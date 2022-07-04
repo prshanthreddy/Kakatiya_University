@@ -34,16 +34,9 @@
     height: 37px;
     width: 151px;
 }
-/* option{
-    
-    width: 180px;
-    height: 35px;
-    
-} */
-
 select{
-  width: 181px;
-  height: 35px;
+  width: 300px;
+  height: 40px;
   background-color:gray;
   color: beige;
 }

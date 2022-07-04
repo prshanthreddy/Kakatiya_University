@@ -7,6 +7,12 @@
     border-radius: 3px;
     font-size: 18px;
 }
+.main {
+    width: auto;
+    text-align: center;
+    border: 2px;
+    font-family: copperplate;
+}
 .btn:hover {
     color: black;
     background-color: rgb(222, 220, 245);

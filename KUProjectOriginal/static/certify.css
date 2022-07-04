@@ -22,6 +22,7 @@ button {
     margin-top: 20px;
     padding: 5px 20px;
     font-size: 20px;
+    border-radius: 8px;
 }
 
 .sub1 {
@@ -96,4 +97,9 @@ button {
 #third {
     float: right;
     width: 40%;
+}
+@media print {
+    #print{
+      display: none;
+    }
 }

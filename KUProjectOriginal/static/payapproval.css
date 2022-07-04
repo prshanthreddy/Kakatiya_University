@@ -1,6 +1,5 @@
 .whole {
     text-align: center;
-    border: 2px solid black;
     width: fit-content;
     margin: auto;
     padding: 50px;
@@ -27,15 +26,16 @@
 }
 table, th,td{
     border: 1px solid black;
+    border-collapse: collapse;
 }
 th,
 td {
     padding: 20px;
     font-size: 25px;
-    border-collapse: collapse;
 }
 
 th {
+    width: 50%;
     text-align: left;
 }
 

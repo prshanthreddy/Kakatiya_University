@@ -4,7 +4,9 @@ h1 {
 }
 
 body {
-    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .whole {
@@ -20,10 +22,23 @@ body {
     font-family: copperplate;
 }
 
+table,
 th,
 td {
-    padding: 13px;
-    font-size: 22px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+}
+
+th {
+    width: 50%;
+    padding-left: 30px;
 }
 
 .reason {
@@ -34,6 +49,7 @@ td {
 }
 
 .btn {
+    justify-content: center;
     height: 32px;
     width: 200px;
     color: rgb(0, 0, 0);
@@ -54,11 +70,9 @@ td {
     height: 4.1cm;
     width: 4.5cm;
     border: 2px solid black;
-    border-radius: 50%;
 }
 
 .photo {
     height: 4.1cm;
     width: 4.5cm;
-    border-radius: 50%;
 }

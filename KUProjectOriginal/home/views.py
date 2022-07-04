@@ -159,11 +159,11 @@ def validate(request):
         request.session['ptime'] = ptime = request.POST.get('ptime')
         request.session['otf'] = onTimef = 0
         request.session['onTime'] = onTime = request.POST.get('onTime')
-        filef=None
-        if(ptime == 'false' and onTime == 'true'):
-            onTimef = request.FILES['onTimef']
-            filef = fs.save(onTimef.name, onTimef)
-        request.session['otf'] = filef
+
+        # if(ptime == 'false' and onTime == 'true'):
+        #     onTimef = request.FILES['onTimef']
+        # file = fs.save(onTimef.name, onTimef)
+        request.session['otf'] = file
         prephd = request.FILES['prephd']
         file = fs.save(prephd.name, prephd)
         request.session['prephd'] = file
@@ -176,19 +176,9 @@ def validate(request):
         uploadthesis = request.FILES['uploadthesis']
         file = fs.save(uploadthesis.name, uploadthesis)
         request.session['fthesis'] = file
-        
-        sem1 = request.FILES['sem1']
-        file = fs.save(sem1.name, sem1)
-        request.session['sem1'] = file
-        
-        sem2 = request.FILES['sem2']
-        file = fs.save(sem2.name, sem2)
-        request.session['sem2'] = file
-        
         pc = request.FILES['pc']
         file = fs.save(pc.name, pc)
         request.session['pc'] = file
-        
         request.session['dateofsubmission'] = request.POST.get(
             'dateofsubmission')
         noc = request.FILES['noc']
@@ -199,7 +189,7 @@ def validate(request):
         file = fs.save(Sign.name, Sign)
         request.session['sign'] = file
 
-    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'],'sem1':request.session['sem2'],'sem2':request.session['sem2'], 'pc': request.session['pc'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
+    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'], 'pc': request.session['pc'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
 
 
 def success(request):
@@ -238,8 +228,6 @@ def success(request):
             article=request.session['article'],
             synopsis=request.session['syn'],
             fullthesis=request.session['fthesis'],
-            sem1 =request.session['sem1'],
-            sem2=request.session['sem2'],
             pc=request.session['pc'],
             dateofsubmission=request.session['dateofsubmission'],
             noc=request.session['noc'],
@@ -465,8 +453,6 @@ def test(request):
                     article=obj.article,
                     synopsis=obj.synopsis,
                     fullthesis=obj.fullthesis,
-                    sem1=obj.sem1,
-                    sem2=obj.sem2,
                     pc=obj.pc,
                     dateofsubmission=obj.dateofsubmission,
                     noc=obj.noc,
@@ -526,6 +512,7 @@ loginses=""
 acoeloginses=""
 coeloginses=""
 vcloginses=""
+
 def bcvdverify(request):
     if request.method == "POST":
         user = request.POST.get('user')
@@ -627,7 +614,10 @@ def boslogin(request):
             mobile=request.POST.get("e1mob"),
             email=request.POST.get("e1mail"),
         )
-        e1.save()
+        try:
+            Examiner.objects.get(mobile=e1.mobile)
+        except:    
+            e1.save() 
         e2 = Examiner(
             name=request.POST.get("e2name"),
             dept=request.POST.get("e2dep"),
@@ -636,7 +626,10 @@ def boslogin(request):
             mobile=request.POST.get("e2mob"),
             email=request.POST.get("e2mail"),
         )
-        e2.save()
+        try: 
+            Examiner.objects.get(mobile=e2.mobile)
+        except:    
+            e2.save()
         e3 = Examiner(
             name=request.POST.get("e3name"),
             dept=request.POST.get("e3dep"),
@@ -645,7 +638,10 @@ def boslogin(request):
             mobile=request.POST.get("e3mob"),
             email=request.POST.get("e3mail"),
         )
-        e3.save()
+        try:
+            Examiner.objects.get(mobile=e3.mobile)
+        except:    
+            e3.save()
         e4 = Examiner(
             name=request.POST.get("e4name"),
             dept=request.POST.get("e4dep"),
@@ -654,7 +650,10 @@ def boslogin(request):
             mobile=request.POST.get("e4mob"),
             email=request.POST.get("e4mail"),
         )
-        e4.save()
+        try:
+            Examiner.objects.get(mobile=e4.mobile)
+        except:    
+            e4.save()
         e5 = Examiner(
             name=request.POST.get("e5name"),
             dept=request.POST.get("e5dep"),
@@ -663,7 +662,10 @@ def boslogin(request):
             mobile=request.POST.get("e5mob"),
             email=request.POST.get("e5mail"),
         )
-        e5.save()
+        try:
+            Examiner.objects.get(mobile=e5.mobile)
+        except:    
+            e5.save()
         e6 = Examiner(
             name=request.POST.get("e6name"),
             dept=request.POST.get("e6dep"),
@@ -672,7 +674,10 @@ def boslogin(request):
             mobile=request.POST.get("e6mob"),
             email=request.POST.get("e6mail"),
         )
-        e6.save()
+        try:
+            Examiner.objects.get(mobile=e6.mobile)
+        except:    
+            e6.save()
         e7 = Examiner(
             name=request.POST.get("e7name"),
             dept=request.POST.get("e7dep"),
@@ -681,7 +686,10 @@ def boslogin(request):
             mobile=request.POST.get("e7mob"),
             email=request.POST.get("e7mail"),
         )
-        e7.save()
+        try:
+            Examiner.objects.get(mobile=e7.mobile)
+        except:    
+            e7.save()
         e8 = Examiner(
             name=request.POST.get("e8name"),
             dept=request.POST.get("e8dep"),
@@ -690,7 +698,10 @@ def boslogin(request):
             mobile=request.POST.get("e8mob"),
             email=request.POST.get("e8mail"),
         )
-        e8.save()
+        try:
+            Examiner.objects.get(mobile=e8.mobile)
+        except:    
+            e8.save()
         e9 = Examiner(
             name=request.POST.get("e9name"),
             dept=request.POST.get("e9dep"),
@@ -699,7 +710,10 @@ def boslogin(request):
             mobile=request.POST.get("e9mob"),
             email=request.POST.get("e9mail"),
         )
-        e9.save()
+        try:
+            Examiner.objects.get(mobile=e9.mobile)
+        except:    
+            e9.save()
         fs = FileSystemStorage()
         photo = request.FILES['bfile']
         b1 = BOSFill(
