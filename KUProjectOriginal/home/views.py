@@ -160,7 +160,7 @@ def validate(request):
         request.session['otf'] = onTimef = 0
         request.session['onTime'] = onTime = request.POST.get('onTime')
         
-       if(ptime == 'false' and onTime == 'true'):
+        if(ptime == 'false' and onTime == 'true'):
             onTimef = request.FILES['onTimef']
             file = fs.save(onTimef.name, onTimef)
             request.session['otf'] = file
