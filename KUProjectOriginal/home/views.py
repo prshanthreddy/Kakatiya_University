@@ -159,11 +159,11 @@ def validate(request):
         request.session['ptime'] = ptime = request.POST.get('ptime')
         request.session['otf'] = onTimef = 0
         request.session['onTime'] = onTime = request.POST.get('onTime')
-
-        # if(ptime == 'false' and onTime == 'true'):
-        #     onTimef = request.FILES['onTimef']
-        # file = fs.save(onTimef.name, onTimef)
-        request.session['otf'] = file
+        filef=None
+        if(ptime == 'false' and onTime == 'true'):
+            onTimef = request.FILES['onTimef']
+            filef = fs.save(onTimef.name, onTimef)
+        request.session['otf'] = filef
         prephd = request.FILES['prephd']
         file = fs.save(prephd.name, prephd)
         request.session['prephd'] = file
@@ -176,9 +176,19 @@ def validate(request):
         uploadthesis = request.FILES['uploadthesis']
         file = fs.save(uploadthesis.name, uploadthesis)
         request.session['fthesis'] = file
+        
+        sem1 = request.FILES['sem1']
+        file = fs.save(sem1.name, sem1)
+        request.session['sem1'] = file
+        
+        sem2 = request.FILES['sem2']
+        file = fs.save(sem2.name, sem2)
+        request.session['sem2'] = file
+        
         pc = request.FILES['pc']
         file = fs.save(pc.name, pc)
         request.session['pc'] = file
+        
         request.session['dateofsubmission'] = request.POST.get(
             'dateofsubmission')
         noc = request.FILES['noc']
@@ -189,7 +199,7 @@ def validate(request):
         file = fs.save(Sign.name, Sign)
         request.session['sign'] = file
 
-    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'], 'pc': request.session['pc'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
+    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'],'sem1':request.session['sem2'],'sem2':request.session['sem2'], 'pc': request.session['pc'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
 
 
 def success(request):
@@ -228,6 +238,8 @@ def success(request):
             article=request.session['article'],
             synopsis=request.session['syn'],
             fullthesis=request.session['fthesis'],
+            sem1 =request.session['sem1'],
+            sem2=request.session['sem2'],
             pc=request.session['pc'],
             dateofsubmission=request.session['dateofsubmission'],
             noc=request.session['noc'],
@@ -453,6 +465,8 @@ def test(request):
                     article=obj.article,
                     synopsis=obj.synopsis,
                     fullthesis=obj.fullthesis,
+                    sem1=obj.sem1,
+                    sem2=obj.sem2,
                     pc=obj.pc,
                     dateofsubmission=obj.dateofsubmission,
                     noc=obj.noc,
