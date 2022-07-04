@@ -176,6 +176,15 @@ def validate(request):
         uploadthesis = request.FILES['uploadthesis']
         file = fs.save(uploadthesis.name, uploadthesis)
         request.session['fthesis'] = file
+        
+        sem1 = request.FILES['sem1']
+        file = fs.save(sem1.name, sem1)
+        request.session['sem1'] = file
+        
+        sem2 = request.FILES['sem2']
+        file = fs.save(sem2.name, sem2)
+        request.session['sem2'] = file
+        
         pc = request.FILES['pc']
         file = fs.save(pc.name, pc)
         request.session['pc'] = file
@@ -455,6 +464,8 @@ def test(request):
                     article=obj.article,
                     synopsis=obj.synopsis,
                     fullthesis=obj.fullthesis,
+                    sem1=obj.sem1,
+                    sem2=obj.sem2,
                     pc=obj.pc,
                     dateofsubmission=obj.dateofsubmission,
                     noc=obj.noc,
@@ -482,7 +493,6 @@ def adminlogin(request):
         try:
             obj = Applications.objects.get(mob=sandy)
             request.session['apprv'] = sandy
-            print(obj.prephd)
             return render(request, 'adminlogin.html', {'obj': obj})
         except:
             return HttpResponseRedirect('/test')
