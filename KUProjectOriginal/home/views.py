@@ -228,6 +228,8 @@ def success(request):
             article=request.session['article'],
             synopsis=request.session['syn'],
             fullthesis=request.session['fthesis'],
+            sem1=request.session['sem1'],
+            sem2=request.session['sem2'],
             pc=request.session['pc'],
             dateofsubmission=request.session['dateofsubmission'],
             noc=request.session['noc'],
