@@ -34,27 +34,27 @@
                 <table>
                     <tr>
                         <th>Candidate Name</th>
-                        <td>: {{cname}}</td>
+                        <td>{{cname}}</td>
                     </tr>
                     <tr>
                         <th>Father Name</th>
-                        <td>: {{fname}} </td>
+                        <td>{{fname}} </td>
                     </tr>
                     <tr>
                         <th>Mobile Number</th>
-                        <td>: {{mobile}}</td>
+                        <td>{{mobile}}</td>
                     </tr>
                     <tr>
                         <th >Status</th><td>
                         {% if paystatus %}
-                        <p style="color:green">:<b> Payment Verification {{status}} </b></p>
+                        <p style="color:green"><b> Payment Verification {{status}} </b></p>
                         {% else %}
-                        <p style="color:red">:<b> Payment Verification {{status}}</b></p>
+                        <p style="color:red"><b> Payment Verification {{status}}</b></p>
                         {% endif %} 
                         {% if bstatus %}
-                        <p style="color:green">:<b> Details Verification {{status}} </b></p>
+                        <p style="color:green"><b> Details Verification {{status}} </b></p>
                         {% else %}
-                        <p style="color:red">:<b> Details Verification {{status}}</b></p>
+                        <p style="color:red"><b> Details Verification {{status}}</b></p>
                         {% endif %}
                         </td>
                     </tr>
