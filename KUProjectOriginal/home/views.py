@@ -159,11 +159,11 @@ def validate(request):
         request.session['ptime'] = ptime = request.POST.get('ptime')
         request.session['otf'] = onTimef = 0
         request.session['onTime'] = onTime = request.POST.get('onTime')
-
+        
        if(ptime == 'false' and onTime == 'true'):
             onTimef = request.FILES['onTimef']
             file = fs.save(onTimef.name, onTimef)
-        request.session['otf'] = file
+            request.session['otf'] = file
         prephd = request.FILES['prephd']
         file = fs.save(prephd.name, prephd)
         request.session['prephd'] = file
