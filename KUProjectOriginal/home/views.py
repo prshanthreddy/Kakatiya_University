@@ -750,7 +750,6 @@ def boslogin(request):
         b1.save()
     return render(request, 'boslogin.html')
 
-
 def acoelogin(request):
     if (request.session['loginses']!=acoeloginses):
         return HttpResponseRedirect('bcvdlogin')
