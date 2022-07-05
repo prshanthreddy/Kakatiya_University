@@ -185,9 +185,9 @@ def validate(request):
         file = fs.save(sem2.name, sem2)
         request.session['sem2'] = file
         
-        pc = request.FILES['pc']
-        file = fs.save(pc.name, pc)
-        request.session['pc'] = file
+        # pc = request.FILES['pc']
+        # file = fs.save(pc.name, pc)
+        # request.session['pc'] = file
         request.session['dateofsubmission'] = request.POST.get(
             'dateofsubmission')
         noc = request.FILES['noc']
@@ -198,7 +198,7 @@ def validate(request):
         file = fs.save(Sign.name, Sign)
         request.session['sign'] = file
 
-    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'],'sem1':request.session['sem1'],'sem2':request.session['sem2'], 'pc': request.session['pc'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
+    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'],'sem1':request.session['sem1'],'sem2':request.session['sem2'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
 
 
 def success(request):
@@ -239,7 +239,6 @@ def success(request):
             fullthesis=request.session['fthesis'],
             sem1=request.session['sem1'],
             sem2=request.session['sem2'],
-            pc=request.session['pc'],
             dateofsubmission=request.session['dateofsubmission'],
             noc=request.session['noc'],
             myDate=request.session['myDate'],
@@ -412,7 +411,7 @@ def plagiarismverify(request):
             setattr(obje, 'pc', file)    
         setattr(obje, 'plagiarismStatus', val)
         obje.save()
-    obj = Applications.objects.filter(plagiarismStatus='Pending')
+    obj = Applications.objects.filter(transactionstatus='Approved',plagiarismStatus='Pending')
     return render(request, 'plagiarismverify.html', {'objs': obj})   
 
 def plagiarismcheck(request):
@@ -506,7 +505,7 @@ def test(request):
                 S_Reason=request.POST.get('rstat'))
     a = []
     andy = Applications.objects.filter(
-        status='Pending', transactionstatus='Approved')
+        status='Pending', plagiarismStatus='Approved')
 
     return render(request, 'test.html', {'andy': andy})
 
