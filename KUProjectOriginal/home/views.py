@@ -503,7 +503,8 @@ def printform(request):
     if request.method == "POST":
         mob = request.POST.get('nithin')
         obj = Approved.objects.get(mob=mob)
-    return render(request, 'printform.html', {'obj': obj})
+        return render(request, 'printform.html', {'obj': obj})
+    return HttpResponseRedirect("paylogin")    
 
 
 def ApprovedList(request):
