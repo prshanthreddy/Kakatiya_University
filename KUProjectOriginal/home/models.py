@@ -1,6 +1,9 @@
+from email.policy import default
 from tarfile import PAX_NAME_FIELDS
 from unittest.util import _MAX_LENGTH
 from django.db import models
+from django.forms import BooleanField
+from sqlalchemy import null
 # Create your models here.
 
 
@@ -9,8 +12,6 @@ class Applications(models.Model):
     upiid = models.CharField(max_length=200, null=True)
     amount = models.IntegerField(null=True)
     paymentdate = models.DateField(null=True)
-    transactionstatus = models.CharField(
-        null=True, max_length=200, default='Pending')
     Paymentss = models.FileField(null=True)
     cname = models.CharField(max_length=200, null=True)
     fname = models.CharField(max_length=200, null=True)
@@ -49,6 +50,8 @@ class Applications(models.Model):
     noc = models.FileField(null=True)
     myDate = models.CharField(max_length=200,null=True)
     sign = models.FileField(null=True)
+    transactionstatus = models.CharField(null=True, max_length=200, default='Pending')
+    plagiarismStatus = models.CharField(max_length=200, null=True, default='Pending')
     status = models.CharField(max_length=200, null=True, default='Pending')
     S_Reason = models.TextField(
         max_length=500, null=True, default="Checking transaction")

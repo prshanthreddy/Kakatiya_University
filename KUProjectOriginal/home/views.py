@@ -375,8 +375,6 @@ def logverify(request):
             password = request.POST.get('pass')
             try:
                 obj = OfficeAuthenticates.objects.get(username=user)
-                print(obj)
-                print(obj.nextpage)
                 if obj.password == password:
                     return HttpResponseRedirect(obj.nextpage)
             except:
@@ -400,6 +398,27 @@ def payverify(request):
         return render(request, 'payverify.html', {'objs': obj})
     return HttpResponseRedirect('paylogin')
 
+def plagiarismverify(request):
+    if request.method == "POST":
+        val = request.POST.get('stat')
+        obje = Applications.objects.get(mob=request.session['verfphno'])
+        if(val != "Approved"):
+            setattr(obje, 'status', val)
+            setattr(obje, 'S_Reason', request.POST.get('rstat'))
+        setattr(obje, 'transactionstatus', val)
+        obje.save()
+    obj = Applications.objects.filter(plagiarismStatus='Pending')
+    return render(request, 'plagiarismverify.html', {'objs': obj})   
+
+def plagiarismcheck(request):
+    if request.method == "POST":
+        phno = request.POST.get('persel')
+        try:
+            obj = Applications.objects.get(mob=phno)
+            request.session['verfphno'] = phno
+            return render(request, 'plagiarismcheck.html', {'objs': obj})
+        except:
+            return HttpResponseRedirect('plagiarismcheck')            
 
 def paydetails(request):
     if(request.session['var'] == 3):
@@ -496,7 +515,7 @@ def adminlogin(request):
             return render(request, 'adminlogin.html', {'obj': obj})
         except:
             return HttpResponseRedirect('/test')
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/paylogin')
 
 
 def printform(request):
