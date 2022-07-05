@@ -405,7 +405,12 @@ def plagiarismverify(request):
         if(val != "Approved"):
             setattr(obje, 'status', val)
             setattr(obje, 'S_Reason', request.POST.get('rstat'))
-        setattr(obje, 'transactionstatus', val)
+        else:
+            pc = request.FILES['pc']
+            fs = FileSystemStorage()
+            file = fs.save(pc.name, pc)
+            setattr(obje, 'pc', file)    
+        setattr(obje, 'plagiarismStatus', val)
         obje.save()
     obj = Applications.objects.filter(plagiarismStatus='Pending')
     return render(request, 'plagiarismverify.html', {'objs': obj})   
