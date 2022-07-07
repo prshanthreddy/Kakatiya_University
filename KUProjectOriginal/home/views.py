@@ -9,10 +9,19 @@ from django.core.files.storage import FileSystemStorage
 from django.db.models.fields import EmailField
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse
+from django.template import RequestContext
 from psutil import users
 from home.models import Applications, Approved, Authenticate, BOSFill, Examiner, OfficeAuthenticates
 from django.contrib import messages
 import datetime
+
+def error_404(request, exception):
+        data = {}
+        return render(request,'error404.html', data)
+
+def error_500(request):
+        data = {}
+        return render(request,'error500.html', data)
 
 def sample(request):
     return render(request,'sample1.html')
