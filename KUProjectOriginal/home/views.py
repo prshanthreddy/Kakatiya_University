@@ -23,8 +23,8 @@ def error_500(request):
         data = {}
         return render(request,'error500.html', data)
 
-def sample(request):
-    return render(request,'sample1.html')
+# def sample(request):
+#     return render(request,'sample1.html')
 def getExaminars(obj):
     l = []
     obj1 = Examiner.objects.get(mobile=obj.examiner1)
