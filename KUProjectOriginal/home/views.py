@@ -560,16 +560,16 @@ def logout(request):
         return HttpResponseRedirect('bcvdlogin')
     if request.session['loginses']=="ACOEKU":
         user=acoeloginses
+        acoeloginses="hola"
     elif request.session['loginses']=="COEKU":
         user=coeloginses
+        coeloginses="hola"
     elif request.session['loginses']=="VCKU":
         user=vcloginses
+        vcloginses="hola"
     else:
         user=loginses
-    acoeloginses="hola"
-    loginses="hola"
-    coeloginses="hola"
-    vcloginses="hola"
+        loginses="hola"
     request.session['loginses']='logedout'
     return render(request,'logout.html',{'user':user})
 
