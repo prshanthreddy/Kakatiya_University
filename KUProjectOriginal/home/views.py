@@ -9,10 +9,19 @@ from django.core.files.storage import FileSystemStorage
 from django.db.models.fields import EmailField
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse
+from django.template import RequestContext
 from psutil import users
 from home.models import Applications, Approved, Authenticate, BOSFill, Examiner, OfficeAuthenticates
 from django.contrib import messages
 import datetime
+
+def error_404(request, exception):
+        data = {}
+        return render(request,'error404.html', data)
+
+def error_500(request):
+        data = {}
+        return render(request,'error500.html', data)
 
 def sample(request):
     return render(request,'sample1.html')
@@ -185,9 +194,9 @@ def validate(request):
         file = fs.save(sem2.name, sem2)
         request.session['sem2'] = file
         
-        pc = request.FILES['pc']
-        file = fs.save(pc.name, pc)
-        request.session['pc'] = file
+        # pc = request.FILES['pc']
+        # file = fs.save(pc.name, pc)
+        # request.session['pc'] = file
         request.session['dateofsubmission'] = request.POST.get(
             'dateofsubmission')
         noc = request.FILES['noc']
@@ -198,7 +207,7 @@ def validate(request):
         file = fs.save(Sign.name, Sign)
         request.session['sign'] = file
 
-    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'],'sem1':request.session['sem1'],'sem2':request.session['sem2'], 'pc': request.session['pc'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
+    return render(request, 'validate.html', {'sign': request.session['sign'], 'mydate': request.session['myDate'],'sem1':request.session['sem1'],'sem2':request.session['sem2'], 'noc': request.session['noc'], 'date': request.session['dateofsubmission'], 'fthesis': request.session['fthesis'], 'syn': request.session['syn'], 'article': request.session['article'], 'yearofadd': request.session["yearofadd"], 'prephd': request.session['prephd'], 'otf': request.session['otf'], 'otime': request.session['onTime'], 'ptime': request.session['ptime'], 'time': request.session['time'], 'photo': request.session['photo'], 'th': request.session['th'],'prephdmonthandyear':request.session['prephdmonthandyear'], 'supre': request.session['supre'], 'ador': request.session['ador'], 'supname': request.session['supname'], 'supdept': request.session['supdept'], "supwadd": request.session["supwadd"], 'monthyear': request.session['monthyear'], 'university': request.session['university'], 'equalexam': request.session['equalexam'], 'ftsubmit': request.session['ftsubmit'],  'addr': request.session['address'], 'mail': request.session['email'], 'mob': request.session['mob'], 'dob': request.session['dob'], 'caste': request.session['caste'], 'fname': request.session['fname'], 'cname': request.session['cname'], 'payss': request.session['payss'], 'paymt': request.session['paymentdate'], 'amount': request.session['amount'], 'upiid': request.session['upiid'], 'titlethesis': request.session['titlethesis'], 'photo': request.session['photo']})
 
 
 def success(request):
@@ -239,7 +248,6 @@ def success(request):
             fullthesis=request.session['fthesis'],
             sem1=request.session['sem1'],
             sem2=request.session['sem2'],
-            pc=request.session['pc'],
             dateofsubmission=request.session['dateofsubmission'],
             noc=request.session['noc'],
             myDate=request.session['myDate'],
@@ -375,8 +383,6 @@ def logverify(request):
             password = request.POST.get('pass')
             try:
                 obj = OfficeAuthenticates.objects.get(username=user)
-                print(obj)
-                print(obj.nextpage)
                 if obj.password == password:
                     return HttpResponseRedirect(obj.nextpage)
             except:
@@ -400,6 +406,32 @@ def payverify(request):
         return render(request, 'payverify.html', {'objs': obj})
     return HttpResponseRedirect('paylogin')
 
+def plagiarismverify(request):
+    if request.method == "POST":
+        val = request.POST.get('stat')
+        obje = Applications.objects.get(mob=request.session['verfphno'])
+        if(val != "Approved"):
+            setattr(obje, 'status', val)
+            setattr(obje, 'S_Reason', request.POST.get('rstat'))
+        else:
+            pc = request.FILES['pc']
+            fs = FileSystemStorage()
+            file = fs.save(pc.name, pc)
+            setattr(obje, 'pc', file)    
+        setattr(obje, 'plagiarismStatus', val)
+        obje.save()
+    obj = Applications.objects.filter(transactionstatus='Approved',plagiarismStatus='Pending')
+    return render(request, 'plagiarismverify.html', {'objs': obj})   
+
+def plagiarismcheck(request):
+    if request.method == "POST":
+        phno = request.POST.get('persel')
+        try:
+            obj = Applications.objects.get(mob=phno)
+            request.session['verfphno'] = phno
+            return render(request, 'plagiarismcheck.html', {'objs': obj})
+        except:
+            return HttpResponseRedirect('plagiarismcheck')            
 
 def paydetails(request):
     if(request.session['var'] == 3):
@@ -421,7 +453,7 @@ def ponewpassword(request):
     return render(request, 'ponewpassword.html')
 
 
-def test(request):
+def verifydetails(request):
     if request.method == "POST":
         if request.POST.get('stat') == 'Approved':
             apprv = request.session['apprv']
@@ -474,7 +506,7 @@ def test(request):
                     status=obj.status
                 )
                 approve.save()
-                return HttpResponseRedirect("/test")
+                return HttpResponseRedirect("/verifydetails")
         elif request.POST.get('stat') == 'Rejected':
             apprv = request.session['apprv']
             Applications.objects.filter(mob=apprv).update(status='Rejected')
@@ -482,9 +514,9 @@ def test(request):
                 S_Reason=request.POST.get('rstat'))
     a = []
     andy = Applications.objects.filter(
-        status='Pending', transactionstatus='Approved')
+        status='Pending', plagiarismStatus='Approved')
 
-    return render(request, 'test.html', {'andy': andy})
+    return render(request, 'verifydetails.html', {'andy': andy})
 
 
 def adminlogin(request):
@@ -495,8 +527,8 @@ def adminlogin(request):
             request.session['apprv'] = sandy
             return render(request, 'adminlogin.html', {'obj': obj})
         except:
-            return HttpResponseRedirect('/test')
-    return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/verifydetails')
+    return HttpResponseRedirect('/paylogin')
 
 
 def printform(request):
