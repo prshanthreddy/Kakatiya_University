@@ -453,7 +453,7 @@ def ponewpassword(request):
     return render(request, 'ponewpassword.html')
 
 
-def test(request):
+def verifydetails(request):
     if request.method == "POST":
         if request.POST.get('stat') == 'Approved':
             apprv = request.session['apprv']
@@ -506,7 +506,7 @@ def test(request):
                     status=obj.status
                 )
                 approve.save()
-                return HttpResponseRedirect("/test")
+                return HttpResponseRedirect("/verifydetails")
         elif request.POST.get('stat') == 'Rejected':
             apprv = request.session['apprv']
             Applications.objects.filter(mob=apprv).update(status='Rejected')
@@ -516,7 +516,7 @@ def test(request):
     andy = Applications.objects.filter(
         status='Pending', plagiarismStatus='Approved')
 
-    return render(request, 'test.html', {'andy': andy})
+    return render(request, 'verifydetails.html', {'andy': andy})
 
 
 def adminlogin(request):
@@ -527,7 +527,7 @@ def adminlogin(request):
             request.session['apprv'] = sandy
             return render(request, 'adminlogin.html', {'obj': obj})
         except:
-            return HttpResponseRedirect('/test')
+            return HttpResponseRedirect('/verifydetails')
     return HttpResponseRedirect('/paylogin')
 
 

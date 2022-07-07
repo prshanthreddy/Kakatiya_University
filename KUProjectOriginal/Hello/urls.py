@@ -24,7 +24,7 @@ urlpatterns = [
     path('paydetails', views.paydetails, name='anonym1'),
     path('paylogin', views.paylogin, name='flogin'),
     path('logverify', views.logverify, name='payverify'),
-    path('test', views.test, name='test'),
+    path('verifydetails', views.verifydetails, name='verifydetails'),
     path('adminlogin', views.adminlogin),
     path('printform', views.printform, name='printform'),
     path('Approveds', views.ApprovedList, name='ApprovedList'),
