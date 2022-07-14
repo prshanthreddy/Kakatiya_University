@@ -7,6 +7,13 @@
     <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
    
 </head>
+<style>
+    @media print {
+        #print{
+          display: none;
+        }
+    }
+</style>
 <body > 
 {% csrf_token %}
         <div class="whole">
@@ -81,7 +88,7 @@
             <br>
             <br>
             <div class="sub">
-               <center> <button id="print" class="btn btn-primary " onclick="window.print()">Print </button></center>
+               <center> <button id="print" onclick="window.print()">Print </button></center>
             </div>
             <br>
             <br>
