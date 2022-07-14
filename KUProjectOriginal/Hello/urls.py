@@ -69,6 +69,7 @@ urlpatterns = [
     path('bosnewpassword',views.bosnewpassword),
     path('ponewpassword',views.ponewpassword),
     path('logout',views.logout),
+    path('logout_PPV',views.logout_PPV),
     path('plagiarismcheck',views.plagiarismcheck),
     path('plagiarismverify',views.plagiarismverify),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

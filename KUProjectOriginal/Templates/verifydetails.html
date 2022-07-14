@@ -7,8 +7,7 @@
 </head>
 
 <body>
-    <form method="post" action="/adminlogin">
-        {% csrf_token %}
+    
         <div class="whole">
             <div class="main">
                 <div class="logo">
@@ -21,20 +20,25 @@
             </div>
         </div>
         <div>
-            <center><select class="select" name="nithin">
+            <center><form method="post" action="/adminlogin">
+                {% csrf_token %}
+                
+                <select class="select" name="nithin">
                     {% for i in andy %}
                     <option value="{{i.mob}}">{{i.cname}}</option>
                     {% endfor %}    
                 </select><br><br><br>
-                <input class="btn" value="Open" type="submit">
-            </center>
+                <input class="btn" value="Open" type="submit" />
+            </form>
         </div>
-    </form>
+    
     <br>
     <br>
     <br>
     <center>
-        <a href="/Approveds" ><input type="button"class="btn" value="Approved">
+        <a href="/Approveds" ><input type="button"class="btn" value="Approved" /></a>
+
+        <br><br><br><a href="/logout_PPV"><button class="btn" >Log out</button></a>
     </center>
 </body>
 </html>

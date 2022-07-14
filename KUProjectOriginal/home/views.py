@@ -23,8 +23,6 @@ def error_500(request):
         data = {}
         return render(request,'error500.html', data)
 
-# def sample(request):
-#     return render(request,'sample1.html')
 def getExaminars(obj):
     l = []
     obj1 = Examiner.objects.get(mobile=obj.examiner1)
@@ -374,26 +372,34 @@ def paylogin(request):
     request.session['var'] = 1
     return render(request, 'paylogin.html')
 
-
+payloginses =""
+verifyloginses = ""
+Plagloginses = ""
 def logverify(request):
-    if(request.session['var'] == 1):
-        request.session['var'] = 2
         if request.method == "POST":
             user = request.POST.get('user')
             password = request.POST.get('pass')
             try:
                 obj = OfficeAuthenticates.objects.get(username=user)
                 if obj.password == password:
+                    global payloginses,verifyloginses,Plagloginses
+                    if(user=="PaymentOfficer"):
+                        payloginses=user
+                        request.session['loginses']= payloginses
+                    elif(user=="PlagiarismOfficer"):
+                        Plagloginses=user
+                        request.session['loginses']= Plagloginses
+                    else:
+                        verifyloginses=user
+                        request.session['loginses']= verifyloginses
                     return HttpResponseRedirect(obj.nextpage)
             except:
                 pass
         return HttpResponseRedirect('paylogin')
-    return HttpResponseRedirect('paylogin')
 
 
 def payverify(request):
-    if(request.session['var'] == 2):
-        request.session['var'] = 3
+    if(request.session['loginses'] == payloginses):
         if request.method == "POST":
             val = request.POST.get('stat')
             obje = Applications.objects.get(mob=request.session['verfphno'])
@@ -407,6 +413,8 @@ def payverify(request):
     return HttpResponseRedirect('paylogin')
 
 def plagiarismverify(request):
+    if( request.session['loginses']!=Plagloginses):
+        return HttpResponseRedirect('paylogin')
     if request.method == "POST":
         val = request.POST.get('stat')
         obje = Applications.objects.get(mob=request.session['verfphno'])
@@ -424,6 +432,8 @@ def plagiarismverify(request):
     return render(request, 'plagiarismverify.html', {'objs': obj})   
 
 def plagiarismcheck(request):
+    if( request.session['loginses']!=Plagloginses):
+        return HttpResponseRedirect('paylogin')
     if request.method == "POST":
         phno = request.POST.get('persel')
         try:
@@ -434,8 +444,7 @@ def plagiarismcheck(request):
             return HttpResponseRedirect('plagiarismcheck')            
 
 def paydetails(request):
-    if(request.session['var'] == 3):
-        request.session['var'] = 0
+    if(request.session['loginses'] == payloginses):
         if request.method == "POST":
             phno = request.POST.get('persel')
             try:
@@ -454,6 +463,8 @@ def ponewpassword(request):
 
 
 def verifydetails(request):
+    if(request.session['loginses'] != verifyloginses):
+        return HttpResponseRedirect('paylogin')
     if request.method == "POST":
         if request.POST.get('stat') == 'Approved':
             apprv = request.session['apprv']
@@ -520,6 +531,8 @@ def verifydetails(request):
 
 
 def adminlogin(request):
+    if(request.session['loginses'] != verifyloginses):
+        return HttpResponseRedirect('paylogin')
     if request.method == "POST":
         sandy = request.POST.get('nithin')
         try:
@@ -532,6 +545,8 @@ def adminlogin(request):
 
 
 def printform(request):
+    if(request.session['loginses'] != verifyloginses):
+        return HttpResponseRedirect('paylogin')
     if request.method == "POST":
         mob = request.POST.get('nithin')
         obj = Approved.objects.get(mob=mob)
@@ -540,6 +555,8 @@ def printform(request):
 
 
 def ApprovedList(request):
+    if(request.session['loginses'] != verifyloginses):
+        return HttpResponseRedirect('paylogin')
     a = []
     obj = Approved.objects.all()
 
@@ -604,6 +621,23 @@ def logout(request):
         loginses="hola"
     request.session['loginses']='logedout'
     return render(request,'logout.html',{'user':user})
+
+def logout_PPV(request):
+    global payloginses,Plagloginses,verifyloginses
+    if (request.session['loginses']!=payloginses  and request.session['loginses']!=Plagloginses and request.session['loginses']!=verifyloginses  ):
+        return HttpResponseRedirect('paylogin')
+    if request.session['loginses']=="PaymentOfficer":
+        user=payloginses
+        payloginses="hola"
+    elif request.session['loginses']=="PlagiarismOfficer":
+        user=Plagloginses
+        Plagloginses="hola"
+    elif request.session['loginses']=="VerifyOfficer":
+        user=verifyloginses
+        verifyloginses="hola"
+    request.session['loginses']='logedout'
+    return render(request,'logout.html',{'user':user})
+
 
 def bosnewpassword(request):
     if request.method == "POST":
