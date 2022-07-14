@@ -15,13 +15,13 @@ from home.models import Applications, Approved, Authenticate, BOSFill, Examiner,
 from django.contrib import messages
 import datetime
 
-def error_404(request, exception):
-        data = {}
-        return render(request,'error404.html', data)
+# def error_404(request, exception):
+#         data = {}
+#         return render(request,'error404.html', data)
 
-def error_500(request):
-        data = {}
-        return render(request,'error500.html', data)
+# def error_500(request):
+#         data = {}
+#         return render(request,'error500.html', data)
 
 def getExaminars(obj):
     l = []
