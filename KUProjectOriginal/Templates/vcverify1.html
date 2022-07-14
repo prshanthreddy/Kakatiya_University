@@ -62,13 +62,16 @@
             border: 3px solid black;
         }
     </style>
+    <title>
+        {{andy.cid}}_Verify_Note1
+    </title>
 </head>
 <body >
 
     <h1>
         <center style="margin-bottom:-50px; margin-top: 50px;">KAKATIYA UNIVERSITY</center>
     </h1>
-    <form action="/vcnote1" method="post">
+    <form action="/vcnote1" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="v0" </div>
             <div class="v" </div>
@@ -159,7 +162,7 @@
                         </div>
                         <br>
                         <div>
-                            <input type="file" id="myfile" name="myfile" style="width:160px" required>
+                            <input type="file" id="myfile" name="vcsign" style="width:160px" required>
                             <br>
                             <br>
                             <b>VICE-CHANCELLOR</b>

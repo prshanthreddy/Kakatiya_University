@@ -73,6 +73,9 @@
             border-radius: 4px;
         }
     </style>
+    <title>
+        {{andy.cid}}_Verify_Note1
+    </title>
     
 </head>
 <body >
@@ -151,12 +154,14 @@
                             <li>{{i.name}},{{i.nameOfUniv}},<b>{{ i.state}} </b>.</li>
                             {% endfor %}
                         </ol>
+                        <b style="float:right;">File for VC</b><br>
+                        <input type="file" id="myfile" name="myfile" style="width:160px;float:right;" required />
                     </div>
-                    <br>
+                    <br><br><br>
                     <center>
-                            <input type="file" id="myfile" name="myfile" style="width:160px" required>
+                        <input type="file" id="myfile" name="acoesign" style="width:160px" required /> 
                             <br>
-                            <b>File for VC</b>
+                            <b>ACOE Signature</b>
                         
                         <br><br><br>
                         <select name="stat1" onchange="space(this)" class='apr'>

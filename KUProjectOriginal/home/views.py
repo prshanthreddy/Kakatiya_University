@@ -848,6 +848,8 @@ def acoenote1(request):
         fs = FileSystemStorage()
         photo = request.FILES['myfile']
         obj.panel = fs.save(photo.name, photo)
+        photo = request.FILES['acoesign']
+        obj.acoesign = fs.save(photo.name, photo)
         obj.acoeNote1Date = datetime.date.today()
         obj.save()
     obj = BOSFill.objects.filter(acoeNote1Status='Pending')
@@ -875,6 +877,9 @@ def coenote1(request):
         obj = BOSFill.objects.get(cid=request.session['coethroughid'])
         obj.coeNote1Status = "Approved"
         obj.coeNote1Date = datetime.date.today()
+        fs = FileSystemStorage()
+        photo = request.FILES['coesign']
+        obj.coesign = fs.save(photo.name, photo)
         obj.save()
     obj = BOSFill.objects.filter(
         acoeNote1Status='Approved', coeNote1Status='Pending')
@@ -900,6 +905,9 @@ def vcnote1(request):
         obj = BOSFill.objects.get(cid=request.session['vcthroughid'])
         obj.vcNote1Status = "Approved"
         obj.vcNote1Date = datetime.date.today()
+        fs = FileSystemStorage()
+        photo = request.FILES['vcsign']
+        obj.vcsign = fs.save(photo.name, photo)
         obj.save()
         s1 = int(request.POST.get('s1'))
         s2 = int(request.POST.get('s2'))

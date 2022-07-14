@@ -143,7 +143,7 @@ class BOSFill(models.Model):
     acoeNote1Status = models.CharField(max_length=200, null=True, default='Pending')
     acoeNote1Reason = models.CharField(max_length=100, null=True, default="Accepted")
     acoeNote1Date = models.DateField(max_length=100, null=True)
-    # acoeNote1File = models.FileField(null=True)
+    acoesign = models.FileField(null=True)
 
     acoeNote2Status = models.CharField(max_length=200, null=True, default='Pending')
     acoeNote2Date = models.DateField(max_length=100, null=True)
@@ -155,7 +155,7 @@ class BOSFill(models.Model):
 
     coeNote1Status = models.CharField(max_length=200, null=True, default='Pending')
     coeNote1Date = models.DateField(max_length=100, null=True)
-    # coeNote1File = models.FileField(null=True)
+    coesign = models.FileField(null=True)
 
     coeNote2Status = models.CharField(max_length=200, null=True, default='Pending')
     coeNote2Date = models.DateField(max_length=100, null=True)
@@ -167,11 +167,11 @@ class BOSFill(models.Model):
 
     vcNote1Status = models.CharField(max_length=200, null=True, default='Pending')
     vcNote1Date = models.DateField(max_length=100, null=True)
-    # vcNote1File = models.FileField(null=True)
+    vcsign = models.FileField(null=True)
 
     vcNote2Status = models.CharField(max_length=200, null=True, default='Pending')
     vcNote2Date = models.DateField(max_length=100, null=True)
-    vcNote2File = models.FileField(null=True)
+    # vcNote2File = models.FileField(null=True)
 
     vcNote3Status = models.CharField(max_length=200, null=True, default='Pending')
     vcNote3Date = models.DateField(max_length=100, null=True)

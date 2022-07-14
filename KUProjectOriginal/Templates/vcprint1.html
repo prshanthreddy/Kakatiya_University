@@ -167,6 +167,9 @@
                 }
         }
     </style>
+    <title>
+        {{andy.cid}}_Note3
+    </title>
 </head>
 <body >
 
@@ -235,21 +238,21 @@
                 <table border="0px" width="100%">
                     <tr>
                         <td width="33%" style="text-align:center;vertical-align: top;">
-                            <img src="static/sign.png" width="150px" height="40px"><br>{{andy.acoeNote3Date}}<br>
+                            <img src="media/{{andy.acoesign}}" width="150px" height="40px"><br>{{andy.acoeNote3Date}}<br>
                             <h3>ACOE</h3>
                         </td>
                         <td width="33%" style="text-align:center;"><br><br><br><br>
-                            <img src="static/sign.png" width="150px" height="40px"><br>{{andy.coeNote3Date}}<br>
+                            <img src="media/{{andy.coesign}}" width="150px" height="40px"><br>{{andy.coeNote3Date}}<br>
                             <h3>VICE-CHANCELLOR</h3>
                         </td>
                         <td style="text-align:center;vertical-align: top;">
-                            <img src="static/sign.png" width="150px" height="40px"><br>{{andy.vcNote3Date}}<br>
+                            <img src="media/{{andy.vcsign}}" width="150px" height="40px"><br>{{andy.vcNote3Date}}<br>
                             <h3>COE</h3>
                         </td>
                     </tr>
                 </table><br><br>
                 <div class="sub" style="text-align: center;">
-                    <button class="btn btn-primary " onclick="window.print()">Print </button>
+                    <button class="btn btn-primary " onclick="window.print()" id="print">Print </button>
                 </div>
             </div>
         </div>
