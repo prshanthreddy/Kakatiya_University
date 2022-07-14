@@ -302,7 +302,8 @@ def status(request):
                     photo = getattr(obj, 'photo')
                     sta = getattr(obj, 'status')
                     tsta = getattr(obj, 'transactionstatus')
-                    bsta = rej = False
+                    plagsta = getattr(obj, 'plagiarismStatus')
+                    bsta = rej = plagbool = False
                     tstabool = False
                     if sta == 'Approved':
                         request.session['fmobile'] = mobile
@@ -312,8 +313,10 @@ def status(request):
                         rej = True
                     if tsta == "Approved":
                         tstabool = True
+                    if plagsta == "Approved":
+                        plagbool = True
                     srea = getattr(obj, 'S_Reason')
-                    return render(request, 'status.html', {'paystatus': tstabool, 'photo': photo, 'cname': name, 'fname': fname, 'mobile': mobile, 'bstatus': bsta, 'status': sta, 'Sreason': srea, 'Rstatus': rej})
+                    return render(request, 'status.html', {'paystatus': tstabool, 'photo': photo, 'cname': name, 'fname': fname, 'mobile': mobile, 'bstatus': bsta, 'status': sta, 'transtatus': tsta, 'plagstatus': plagsta, 'Sreason': srea, 'Rstatus': rej, 'plagstatusbool': plagbool})
                 return render(request, 'check.html', {'message': "Incorrect Password"})
             except:
                 return HttpResponseRedirect("/instruction")
@@ -408,7 +411,7 @@ def payverify(request):
                 setattr(obje, 'S_Reason', request.POST.get('rstat'))
             setattr(obje, 'transactionstatus', val)
             obje.save()
-        obj = Applications.objects.filter(transactionstatus='Pending')
+        obj = Applications.objects.filter(transactionstatus='Pending',plagiarismStatus = "Approved")
         return render(request, 'payverify.html', {'objs': obj})
     return HttpResponseRedirect('paylogin')
 
@@ -428,7 +431,7 @@ def plagiarismverify(request):
             setattr(obje, 'pc', file)    
         setattr(obje, 'plagiarismStatus', val)
         obje.save()
-    obj = Applications.objects.filter(transactionstatus='Approved',plagiarismStatus='Pending')
+    obj = Applications.objects.filter(plagiarismStatus='Pending')
     return render(request, 'plagiarismverify.html', {'objs': obj})   
 
 def plagiarismcheck(request):
@@ -525,7 +528,7 @@ def verifydetails(request):
                 S_Reason=request.POST.get('rstat'))
     a = []
     andy = Applications.objects.filter(
-        status='Pending', plagiarismStatus='Approved')
+        status='Pending', transactionstatus='Approved')
 
     return render(request, 'verifydetails.html', {'andy': andy})
 

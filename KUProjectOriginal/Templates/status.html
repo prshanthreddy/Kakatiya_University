@@ -49,9 +49,14 @@
                     <tr>
                         <th >Status</th><td>
                         {% if paystatus %}
-                        <p style="color:green"><b> Payment Verification {{status}} </b></p>
+                        <p style="color:green"><b> Payment Verification {{transtatus}} </b></p>
                         {% else %}
-                        <p style="color:red"><b> Payment Verification {{status}}</b></p>
+                        <p style="color:red"><b> Payment Verification {{transtatus}}</b></p>
+                        {% endif %} 
+                        {% if plagstatusbool %}
+                        <p style="color:green"><b> Plagiarism Verification {{plagstatus}} </b></p>
+                        {% else %}
+                        <p style="color:red"><b> Plagiarism Verification {{plagstatus}}</b></p>
                         {% endif %} 
                         {% if bstatus %}
                         <p style="color:green"><b> Details Verification {{status}} </b></p>
