@@ -13,6 +13,14 @@
           display: none;
         }
     }
+    button {
+        background-color: rgb(206, 206, 250);
+        cursor: pointer;
+        margin-top: 20px;
+        padding: 5px 20px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
 </style>
 <body > 
 {% csrf_token %}
@@ -90,7 +98,7 @@
             <br>
             <br>
             <div class="sub">
-               <center> <button id="print" onclick="window.print()">Print </button></center>
+               <center> <button id="print" onclick="window.print()" >Print </button></center>
             </div>
             <br>
             <br>
