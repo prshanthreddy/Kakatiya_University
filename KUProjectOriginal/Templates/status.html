@@ -10,78 +10,79 @@
 </head>
 
 <body>
-    
-        <div class="whole">
-            <div class="main">
-                {% csrf_token %}
-                <div class="logo">
-                    <img src="/static/kulogo.jpeg" width="100" height="100">
-                </div>
-                <big><big>
-                    <b><big><big> <big> KAKATIYA UNIVERSITY<br></big><b>
-                    </big></big></big></big>
-                <big><b>Warangal-506 009</b></big>
-                <u>
-                    <h2 style="margin-bottom:19px;">Status of your Application</h2>
-                </u>
+
+    <div class="whole">
+        <div class="main">
+            {% csrf_token %}
+            <div class="logo">
+                <img src="/static/kulogo.jpeg" width="100" height="100">
             </div>
-            <center>
-                <div class="imgdiv">
-                    <img class="photo" src="media/{{photo}}" alt=" your pic">
-                </div>
-            </center>
-                <br>   
-                <br>
-            <center>
-                <table>
-                    <tr>
-                        <th>Candidate Name</th>
-                        <td>{{cname}}</td>
-                    </tr>
-                    <tr>
-                        <th>Father Name</th>
-                        <td>{{fname}} </td>
-                    </tr>
-                    <tr>
-                        <th>Mobile Number</th>
-                        <td>{{mobile}}</td>
-                    </tr>
-                    <tr>
-                        <th >Status</th><td>
-                            {% if plagstatusbool %}
-                            <p style="color:green"><b> Plagiarism Verification {{plagstatus}} </b></p>
-                            {% else %}
-                            <p style="color:red"><b> Plagiarism Verification {{plagstatus}}</b></p>
-                            {% endif %} 
+            <big><big>
+                    <b><big><big> <big> KAKATIYA UNIVERSITY<br></big><b>
+                            </big></big></big></big>
+            <big><b>Warangal-506 009</b></big>
+            <u>
+                <h2 style="margin-bottom:19px;">Status of your Application</h2>
+            </u>
+        </div>
+        <center>
+            <div class="imgdiv">
+                <img class="photo" src="media/{{photo}}" alt=" your pic">
+            </div>
+        </center>
+        <br>
+        <br>
+        <center>
+            <table>
+                <tr>
+                    <th>Candidate Name</th>
+                    <td>{{cname}}</td>
+                </tr>
+                <tr>
+                    <th>Father Name</th>
+                    <td>{{fname}} </td>
+                </tr>
+                <tr>
+                    <th>Mobile Number</th>
+                    <td>{{mobile}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        {% if plagstatusbool %}
+                        <p style="color:green"><b> Plagiarism Verification {{plagstatus}} </b></p>
+                        {% else %}
+                        <p style="color:red"><b> Plagiarism Verification {{plagstatus}}</b></p>
+                        {% endif %}
                         {% if paystatus %}
                         <p style="color:green"><b> Payment Verification {{transtatus}} </b></p>
                         {% else %}
                         <p style="color:red"><b> Payment Verification {{transtatus}}</b></p>
-                        {% endif %} 
+                        {% endif %}
                         {% if bstatus %}
                         <p style="color:green"><b> Details Verification {{status}} </b></p>
                         {% else %}
                         <p style="color:red"><b> Details Verification {{status}}</b></p>
                         {% endif %}
-                        </td>
-                    </tr>
-                </table><br><br>
-                {% if bstatus %}
-                <a href="/certificate" ><button  class="btn">Generate Certificate</button></a>
+                    </td>
+                </tr>
+            </table><br><br>
+            {% if bstatus %}
+            <a href="/certificate"><button class="btn">Generate Certificate</button></a>
 
-                {% else %}
-                <div class="reason">
-                    <h3>{{Sreason}} </h3>
+            {% else %}
+            <div class="reason">
+                <h3>{{Sreason}} </h3>
 
-                </div>
-                {% if Rstatus %}
-                <a href="/delete"><button class="btn" style="background-color:#D0342C;">Fill Form Again</button></a>
-                {% endif %}
-                {% endif %}
+            </div>
+            {% if Rstatus %}
+            <a href="/delete"><button class="btn" style="background-color:#D0342C;">Fill Form Again</button></a>
+            {% endif %}
+            {% endif %}
 
-            </center>
-        </div>
-   
+        </center>
+    </div>
+
 </body>
 
 </html>
