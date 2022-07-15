@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="/static/payapproval.css">
     <link rel="icon" type="image/x-icon" href="static/kulogo.jpeg">
-    <script src="/static/payaproval.js">
+    <script src="/static/plagiarismcheck.js">
         
     </script>
     <title>
@@ -32,11 +32,11 @@
                     </tr>
                     <tr>
                         <th>Synopsis File</th>
-                        <td> <a href="/media/{{objs.synopsis}}" target="_blank">View File</a></td>
+                        <td> <a href="/media/{{objs.synopsis}}"class="btn" target="_blank">View File</a></td>
                     </tr>
                     <tr>
                         <th>Thesis File</th>
-                        <td> <a href="/media/{{objs.fullthesis}}" target="_blank">View File</a></td>
+                        <td> <a href="/media/{{objs.fullthesis}}" class="btn" target="_blank">View File</a></td>
                     </tr>
                     <tr>
                         <th valign='top'>Status</th>
@@ -44,7 +44,7 @@
                                 <option value="Approved">Approve</option>
                                 <option value="Rejected">Reject</option>
                             </select><br>
-                            <span id="txt"><input type="file" name="pc"></span>
+                            <span id="txt"><input type="file" name="pc" required></span>
                         </td>
                     </tr>
                 </table>
