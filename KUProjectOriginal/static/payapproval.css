@@ -7,7 +7,7 @@
 .main{
     font-family:copperplate;
 }
-.btn {
+/* .btn {
     height: 35px;
     width: 150px;
     color: rgb(206, 206, 250);
@@ -23,7 +23,7 @@
     cursor: pointer;
     height: 37px;
     width: 155px;
-}
+} */
 table, th,td{
     border: 1px solid black;
     border-collapse: collapse;
