@@ -11,7 +11,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse
 from django.template import RequestContext
 from psutil import users
-from home.models import Applications, Approved, Authenticate, BOSFill, Examiner, OfficeAuthenticates
+from home.models import Applications, Approved, Authenticate, BOSFill, Examiner, OfficeAuthenticates,PvtOfficeAuthenticates
 from django.contrib import messages
 import datetime
 
@@ -383,7 +383,7 @@ def logverify(request):
             user = request.POST.get('user')
             password = request.POST.get('pass')
             try:
-                obj = OfficeAuthenticates.objects.get(username=user)
+                obj = PvtOfficeAuthenticates.objects.get(username=user)
                 if obj.password == password:
                     global payloginses,verifyloginses,Plagloginses
                     if(user=="PaymentOfficer"):

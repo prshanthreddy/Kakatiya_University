@@ -8,7 +8,7 @@ from django.forms import BooleanField
 
 
 class Applications(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     upiid = models.CharField(max_length=200, null=True)
     amount = models.IntegerField(null=True)
     paymentdate = models.DateField(null=True)
@@ -60,7 +60,7 @@ class Applications(models.Model):
 
 
 class Approved(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     upiid = models.CharField(max_length=200, null=True)
     amount = models.IntegerField(null=True)
     paymentdate = models.DateField(null=True)
@@ -199,6 +199,13 @@ class BOSFill(models.Model):
 
 
 class OfficeAuthenticates(models.Model):
+    username = models.CharField(max_length=100, null=True)
+    password = models.CharField(max_length=100, null=True)
+    nextpage = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return str(self.username)
+class PvtOfficeAuthenticates(models.Model):
     username = models.CharField(max_length=100, null=True)
     password = models.CharField(max_length=100, null=True)
     nextpage = models.CharField(max_length=100, null=True)
