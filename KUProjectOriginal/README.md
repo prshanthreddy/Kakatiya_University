@@ -49,13 +49,13 @@ The growing significance of websites for various organizations is well known. Th
 - All the below officers Login through this [link](http://kuservices.in/paylogin) or click on Officer's login button in Home Page.
 #### Plagairism Officer:
 - Verifies the thesis and synopsis, issues plagairism certificate on succesful verification and uploads the certificate.
-- Specifies reason if rejected.
+- Specifies the reason if rejected.
 #### Payment Officer:
 - Verifies the payment receipts and upi id, approve payment details by clicking on 'approve' button.
-- Specifies reason if rejected.
+- Specifies the reason if rejected.
 #### Verification Officer:
 - Verifies all the details and documents submitted by scholar and approve by clicking on 'approve' button.
-- Specifies reason if rejected.
+- Specifies the reason if rejected.
 ## Administrative Officer's Login
 - All the below officers Login through this [link](http://kuservices.in/bcvdlogin) or click on Administrative Officer's login button in Home Page. 
 #### Board of Studies Login:
